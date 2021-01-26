@@ -2,13 +2,13 @@
 
 ## Atualize os seus dados:
 
-- Nome:
-- Matrícula:
-- Curso:
-- Semestre/Ano correntes:
-- Link para o seu GitHub:
+- Nome: Gildo Tiago Azevedo
+- Matrícula: 17.1.8242
+- Curso: Sistemas de Informação
+- Semestre/Ano correntes: 2020/01 - Remoto
+- Link para o seu GitHub: [https://github.com/Azevor](https://github.com/Azevor)
 
 ## [Projeto final:](./Projeto/README.md) 
 
-Apresente uma breve descrição do seu projeto.
+Para o trabalho final será implementado um sistema para pedido de alimentos online, estilo ifood.
 
