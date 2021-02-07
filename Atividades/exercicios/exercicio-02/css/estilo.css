@@ -51,13 +51,6 @@ cite {
     max-height: 350px;
 }
 
-.imagem {
-    clear: both;
-    margin-top: 20px;
-    float: left;
-    padding: 5px;
-}
-
 img {
     vertical-align: top;
 }
@@ -69,4 +62,35 @@ p {
 
 .texto {
     padding: 5px;
+}
+
+.display-flex {
+    display: flex;
+    flex-direction: row;
+    border-bottom: dotted 2px #1c1c1c;
+}
+
+#foto-universo-principal {
+    clear: both;
+    margin-top: 20px;
+    float: left;
+    padding: 5px;
+}
+
+.foto-perfil {
+    clear: both;
+    margin: 2px;
+    padding: 2px;
+}
+
+.foto-perfil img {
+    max-width: 150px;
+    max-height: 150px;
+}
+
+.descricao-perfil {
+    font-size: 1.1em;
+    text-align: left;
+    vertical-align: top;
+    margin: 2px;
 }
