@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="./css/estilo.css">
+	<link rel="stylesheet" type="text/css" href="./css/formulario.css">
 </head>
 <body>
 
@@ -27,7 +28,7 @@
 	<hr>
 
 	<div>
-		<p>Novo cadastro:</p>
+		<p class="titulo">Novo cadastro:</p>
 	</div>
 
 	<div>
@@ -42,7 +43,7 @@
 			</div>
 			<div>
 				<label for="email">E-mail</label>
-				<input type="email" name="email" id="email">
+				<input type="email" name="email" id="email" placeholder="ex.: fulano@dominio.com.br">
 			</div>
 			<div>
 				<label for="datanasc">Data de nascimento</label>
@@ -96,12 +97,12 @@
 					<label for="documentario">Documentário</label>
 				</div>
 			</div>
-			<div>
+			<div class="campo-botao">
 				<div>
-					<input type="submit" name="enviar" value="Enviar">
+					<input class="botao" type="submit" name="enviar" value="Enviar">
 				</div>
 				<div>
-					<input type="reset" name="limpar" value="Limpar">
+					<input class="botao" type="reset" name="limpar" value="Limpar">
 				</div>
 			</div>
 		</form>

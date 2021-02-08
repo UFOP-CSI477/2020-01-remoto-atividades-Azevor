@@ -1,0 +1,56 @@
+.titulo {
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+label {
+    font-size: 1.2em;
+    padding: 5px;
+}
+
+input {
+    margin: 2px;
+    font-size: 1em;
+    color: #666666;
+}
+
+input[type="text"], input[type="email"] {
+    width: 60%;
+    border: 2px solid #688d8c;
+    border-radius: 5pt;
+    padding: 12px;
+}
+
+input[type="date"] {
+    width: 130px;
+    border: 2px solid #688d8c;
+    border-radius: 5pt;
+    padding: 12px;
+    font-size: 1.2em;
+}
+
+.campo-botao {
+    display: flex;
+    padding: 10px;
+}
+
+.botao {
+    border-radius: 5%;
+    font-size: 1.2em;
+    width: 100px;
+    padding: 8px;
+    margin: 10px;
+    color: #688d8c;
+}
+
+.botao:hover {
+    border-color: #688d8c;
+    color: #426e6c;
+}
+
+.botao:active {
+    background-color: #c6ebe9;
+    border-color: #91c4e2;
+    color: #91c4e2;
+}
