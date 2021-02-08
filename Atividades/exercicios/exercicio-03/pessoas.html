@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="br" dir="ltr">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+<body>
+
+	<header>
+		<h1>Pessoas</h1>
+	</header>
+
+	<div>
+		<ul class="nav">
+			<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+			<li class="nav-item"><a class="nav-link active" href="#">Pessoas</a></li>
+			<li class="nav-item"><a class="nav-link" href="estados.html">Estados</a></li>
+			<li class="nav-item"><a class="nav-link" href="cidades.html">Cidades</a></li>
+			<li class="nav-item"><a class="nav-link" href="produtos.html">Produtos</a></li>
+			<li class="nav-item"><a class="nav-link" href="perfil.html">Perfil</a></li>
+			<li class="nav-item"><a class="nav-link" href="relatorio.html">Relatorio</a></li>
+			<li class="nav-item"><a class="nav-link" href="#">Sair</a></li>
+		</ul>
+	</div>
+
+	<hr>
+
+	<div>
+		<p>Novo cadastro:</p>
+	</div>
+
+	<div>
+		<form method="get" action="cadastrar.php">
+			<div>
+				<label for="nome">Nome</label>
+				<input type="text" name="nome" id="nome" placeholder="Nome Completo">
+			</div>
+			<div>
+				<label for="usuario">Usuário</label>
+				<input type="text" name="usuario" id="usuario" placeholder="Apelido/nickname">
+			</div>
+			<div>
+				<label for="email">E-mail</label>
+				<input type="email" name="email" id="email">
+			</div>
+			<div>
+				<label for="datanasc">Data de nascimento</label>
+				<input type="date" name="datanasc" id="datanasc">
+			</div>
+			<div>
+				<label>Gênero</label>
+				<div>
+					<input type="radio" name="genero" id="masculino" value="M">
+					<label for="masculino">Masculino</label>
+					<input type="radio" name="genero" id="feminino" value="F">
+					<label for="feminino">Feminino</label>
+				</div>
+			</div>
+			<div>
+				<label for="interesse">Áreas de interesse</label>
+				<div>
+					<input type="checkbox" name="A[0]" id="esporte">
+					<label for="esporte">Esporte</label>
+				</div>
+				<div>
+					<input type="checkbox" name="A[1]" id="turismo">
+					<label for="turismo">Turismo</label>
+				</div>
+				<div>
+					<input type="checkbox" name="A[2]" id="cinema">
+					<label for="cinema">Cinema</label>
+				</div>
+				<div>
+					<input type="checkbox" name="A[3]" id="arte">
+					<label for="arte">Arte</label>
+				</div>
+				<div>
+					<input type="checkbox" name="A[4]" id="financas">
+					<label for="financas">Finanças</label>
+				</div>
+				<div>
+					<input type="checkbox" name="A[5]" id="jogoeletronico">
+					<label for="jogoeletronico">Jogos eletrônicos</label>
+				</div>
+				<div>
+					<input type="checkbox" name="A[6]" id="livros">
+					<label for="livros">Livros</label>
+				</div>
+				<div>
+					<input type="checkbox" name="A[7]" id="paisagem">
+					<label for="paisagem">Paisagem</label>
+				</div>
+				<div>
+					<input type="checkbox" name="A[8]" id="documentario">
+					<label for="documentario">Documentário</label>
+				</div>
+			</div>
+			<div>
+				<div>
+					<input type="submit" name="enviar" value="Enviar">
+				</div>
+				<div>
+					<input type="reset" name="limpar" value="Limpar">
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<footer></footer>
+
+</body>
+</html>
