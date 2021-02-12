@@ -10,5 +10,5 @@
 
 ## [Projeto final:](./Projeto/README.md) 
 
-Para o trabalho final será implementado um sistema para pedido de alimentos online, estilo ifood.
+Para o trabalho final será implementado um sistema de controle financeiro pessoal.
 

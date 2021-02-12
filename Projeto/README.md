@@ -7,12 +7,12 @@
 
 ### Resumo
 
-  (Apresentar um breve resumo sobre o seu trabalho, indicando o contexto e as principais funcionalidades.)
+  O projeto consiste no controle pessoal de finanças para registro de entrada (receita) e saída (despesa), e visualização de informações referentes ao balanço financeiro e saldo acumulado dentre outras informações desejáveis, distribuído mensalmente.
 
 <!-- Apresentar o tema. -->
 ### 1. Tema
 
-  O trabalho final tem como tema o desenvolvimento de ...
+  O trabalho final tem como tema o desenvolvimento de um sistema de registro financeiro para controle pessoal.
 
 <!-- Descrever e limitar o escopo da aplicação. -->
 ### 2. Escopo
