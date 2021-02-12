@@ -1,5 +1,5 @@
 # **CSI477-2020-01 - Remoto - Proposta de Trabalho Final**
-## *Aluna(o): Princesa Leia (Luke Skywalker)*
+## *Aluno: Gildo Tiago Azevedo*
 
 --------------
 
@@ -7,7 +7,7 @@
 
 ### Resumo
 
-  O projeto consiste no controle pessoal de finanças para registro de entrada (receita) e saída (despesa), e visualização de informações referentes ao balanço financeiro e saldo acumulado dentre outras informações desejáveis, distribuído mensalmente.
+  O projeto consiste no controle pessoal de finanças para registro de entrada (receitas) e saída (despesas), e visualização de balanço financeiro, dentre outras informações desejáveis, distribuídos mensalmente.
 
 <!-- Apresentar o tema. -->
 ### 1. Tema
