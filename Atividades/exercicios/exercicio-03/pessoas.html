@@ -2,139 +2,192 @@
 <html lang="br" dir="ltr">
 
 <head>
+
 	<meta charset="utf-8">
+
 	<title></title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" 
-	rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" 
+	integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
 </head>
 
 <body>
 
-	<header>
-		<h1>Pessoas</h1>
-	</header>
+	<div class="container">
 
-	<div>
-		<ul class="nav">
-			<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-			<li class="nav-item"><a class="nav-link disabled" href="#">Pessoas</a></li>
-			<li class="nav-item"><a class="nav-link" href="estados.html">Estados</a></li>
-			<li class="nav-item"><a class="nav-link" href="cidades.html">Cidades</a></li>
-			<li class="nav-item"><a class="nav-link" href="produtos.html">Produtos</a></li>
-			<li class="nav-item"><a class="nav-link" href="perfil.html">Perfil</a></li>
-			<li class="nav-item"><a class="nav-link" href="relatorio.html">Relatorio</a></li>
-			<li class="nav-item"><a class="nav-link" href="#">Sair</a></li>
-		</ul>
+		<header>
+
+			<h1>Pessoas</h1>
+
+			<ul class="nav">
+				<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+				<li class="nav-item"><a class="nav-link disabled" href="#">Pessoas</a></li>
+				<li class="nav-item"><a class="nav-link" href="estados.html">Estados</a></li>
+				<li class="nav-item"><a class="nav-link" href="cidades.html">Cidades</a></li>
+				<li class="nav-item"><a class="nav-link" href="produtos.html">Produtos</a></li>
+				<li class="nav-item"><a class="nav-link" href="perfil.html">Perfil</a></li>
+				<li class="nav-item"><a class="nav-link" href="relatorio.html">Relatorio</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">Sair</a></li>
+			</ul>
+
+			<hr>
+
+		</header>
+
+		<main>
+
+			<h2>Novo cadastro:</h2>
+
+			<form method="get" action="#">
+
+				<div class="row">
+					<div class="col-7">
+
+						<div class="form-group">
+							<label for="nome">Nome</label>
+							<input type="text" class="form-control" name="nome" id="nome" placeholder="Nome Completo">
+						</div>
+
+					</div>
+
+					<div class="col-5">
+
+						<div class="form-group">
+							<label for="usuario">Usuário</label>
+							<input type="text" class="form-control" name="usuario" id="usuario" placeholder="Apelido/nickname">
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="row">
+					<div class="col-6">
+
+						<div class="form-group">
+							<label for="email">E-mail</label>
+							<input type="email" class="form-control" name="email" id="email">
+						</div>
+
+					</div>
+
+					<div class="col-3">
+
+						<div class="form-group">
+							<label for="datanasc">Data de nascimento</label>
+							<input type="date" class="form-control" name="datanasc" id="datanasc">
+						</div>
+
+					</div>
+
+					<div class="col-3">
+
+						<div class="row">
+							<div class="col">
+
+								<label>Gênero</label>
+
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col">
+
+								<div class="form-check">
+									<input type="radio" class="form-check-input" name="genero" id="masculino" value="M">
+									<label class="form-check-label" for="masculino">Masculino</label>
+								</div>
+
+							</div>
+							<div class="col">
+
+								<div class="form-check">
+									<input type="radio" class="form-check-input" name="genero" id="feminino" value="F">
+									<label class="form-check-label" for="feminino">Feminino</label>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+					
+						<label for="interesse">Áreas de interesse</label>
+
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col">
+
+						<div class="form-group form-check">
+						<input type="checkbox" class="form-check-input" name="A[0]" id="esporte">
+							<label class="form-check-label" for="esporte">Esporte</label>
+						</div>
+
+						<div class="form-group form-check">
+							<input type="checkbox" class="form-check-input" name="A[1]" id="turismo">
+							<label class="form-check-label" for="turismo">Turismo</label>
+						</div>
+
+						<div class="form-group form-check">
+							<input type="checkbox" class="form-check-input" name="A[2]" id="cinema">
+							<label class="form-check-label" for="cinema">Cinema</label>
+						</div>
+
+						<div class="form-group form-check">
+							<input type="checkbox" class="form-check-input" name="A[3]" id="arte">
+							<label class="form-check-label" for="arte">Arte</label>
+						</div>
+
+					</div>
+					<div class="col">
+
+						<div class="form-group form-check">
+							<input type="checkbox" class="form-check-input" name="A[4]" id="financas">
+							<label class="form-check-label" for="financas">Finanças</label>
+						</div>
+
+						<div class="form-group form-check">
+							<input type="checkbox" class="form-check-input" name="A[5]" id="jogoeletronico">
+							<label class="form-check-label" for="jogoeletronico">Jogos eletrônicos</label>
+						</div>
+
+						<div class="form-group form-check">
+							<input type="checkbox" class="form-check-input" name="A[6]" id="livros">
+							<label class="form-check-label" for="livros">Livros</label>
+						</div>
+
+						<div class="form-group form-check">
+							<input type="checkbox" class="form-check-input" name="A[7]" id="paisagem">
+							<label class="form-check-label" for="paisagem">Paisagem</label>
+						</div>
+
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-2">
+
+						<input type="submit" class="btn btn-primary" name="enviar" value="Enviar">
+
+					</div>
+					<div class="col-2">
+
+						<input type="reset" class="btn btn-danger" name="limpar" value="Limpar">
+
+					</div>
+					<div class="col-8"></div>
+				</div>
+
+			</form>
+
+		</main>
+
+		<footer></footer>
+
 	</div>
-
-	<hr>
-
-	<h2>
-		<p>Novo cadastro:</p>
-	</h2>
-
-	<div>
-
-		<form method="get" action="#">
-
-			<div class="form-group">
-				<label for="nome">Nome</label>
-				<input type="text" class="form-control" name="nome" id="nome" placeholder="Nome Completo">
-			</div>
-
-			<div class="form-group">
-				<label for="usuario">Usuário</label>
-				<input type="text" class="form-control" name="usuario" id="usuario" placeholder="Apelido/nickname">
-			</div>
-
-			<div class="form-group">
-				<label for="email">E-mail</label>
-				<input type="email" class="form-control" name="email" id="email">
-			</div>
-
-			<div class="form-group">
-				<label for="datanasc">Data de nascimento</label>
-				<input type="date" class="form-control" name="datanasc" id="datanasc">
-			</div>
-
-			<div>
-				<label>Gênero</label>
-				<div class="form-check">
-					<input type="radio" class="form-check-input" name="genero" id="masculino" value="M">
-					<label class="form-check-label" for="masculino">Masculino</label>
-				</div>
-				<div class="form-check">
-					<input type="radio" class="form-check-input" name="genero" id="feminino" value="F">
-					<label class="form-check-label" for="feminino">Feminino</label>
-				</div>
-			</div>
-
-			<div>
-				<label for="interesse">Áreas de interesse</label>
-				<div class="form-group form-check">
-					<input type="checkbox" class="form-check-input" name="A[0]" id="esporte">
-					<label class="form-check-label" for="esporte">Esporte</label>
-				</div>
-
-				<div class="form-group form-check">
-					<input type="checkbox" class="form-check-input" name="A[1]" id="turismo">
-					<label class="form-check-label" for="turismo">Turismo</label>
-				</div>
-
-				<div class="form-group form-check">
-					<input type="checkbox" class="form-check-input" name="A[2]" id="cinema">
-					<label class="form-check-label" for="cinema">Cinema</label>
-				</div>
-
-				<div class="form-group form-check">
-					<input type="checkbox" class="form-check-input" name="A[3]" id="arte">
-					<label class="form-check-label" for="arte">Arte</label>
-				</div>
-
-				<div class="form-group form-check">
-					<input type="checkbox" class="form-check-input" name="A[4]" id="financas">
-					<label class="form-check-label" for="financas">Finanças</label>
-				</div>
-
-				<div class="form-group form-check">
-					<input type="checkbox" class="form-check-input" name="A[5]" id="jogoeletronico">
-					<label class="form-check-label" for="jogoeletronico">Jogos eletrônicos</label>
-				</div>
-
-				<div class="form-group form-check">
-					<input type="checkbox" class="form-check-input" name="A[6]" id="livros">
-					<label class="form-check-label" for="livros">Livros</label>
-				</div>
-
-				<div class="form-group form-check">
-					<input type="checkbox" class="form-check-input" name="A[7]" id="paisagem">
-					<label class="form-check-label" for="paisagem">Paisagem</label>
-				</div>
-
-				<div class="form-group form-check">
-					<input type="checkbox" class="form-check-input" name="A[8]" id="documentario">
-					<label class="form-check-label" for="documentario">Documentário</label>
-				</div>
-
-			</div>
-
-			<div>
-
-				<div>
-					<input type="submit" class="btn btn-primary" name="enviar" value="Enviar">
-				</div>
-
-				<div>
-					<input type="reset" class="btn btn-danger" name="limpar" value="Limpar">
-				</div>
-
-			</div>
-
-		</form>
-
-	</div>
-
-	<footer></footer>
 
 </body>
 </html>
