@@ -35,38 +35,59 @@
 					<label class="form-check-label" for="tipoPessoa">Pessoa Jurídica</label>
 				</div>
 
-				<div class="form-group">
-					<label for="documento">Tipo do documento</label>
+				<div class="row">
+					<div class="col-2">
 
-					<select class="form-select form-select-sm" aria-label=".form-select-sm example" 
-					name="tipoDocumento" id="tipoDocumento">
-						<option value="cpf">CPF</option>
-						<option value="rg">RG</option>
-						<option value="cnh">CNH</option>
-					</select>
+						<div class="form-check">
+							<label for="tipoDocumentoLabel">Tipo</label>
+							<select class="form-select form-select" aria-label=".form-select example" 
+							name="tipoDocumento" id="tipoDocumento">
+								<option value="cpf">CPF</option>
+								<option value="rg">RG</option>
+								<option value="cnh">CNH</option>
+							</select>
+						</div>
 
-					<input type="text" class="form-control" name="documento" id="documento" placeholder="Somente números">
+					</div>
+					<div class="col-3">
+
+						<div class="form-group">
+							<label for="documento">Documento</label>
+							<input type="text" class="form-control" name="documento" id="documento" placeholder="Somente números">
+						</div>
+					
+					</div>
+
+					<div class="col-7">
+
+						<div class="form-group">
+							<label for="nome">Nome</label>
+							<input type="text" class="form-control" name="nome" id="nome" placeholder="Nome e Sobrenome">
+						</div>
+
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-3">
+
+						<div class="form-group">
+							<label for="dataNasc" id="dataNascLabel">Data de nascimento</label>
+							<input type="date" class="form-control" name="dataNasc" id="dataNasc">
+						</div>
+
+					</div>
+					<div class="col-9">
+
+						<div class="form-group">
+							<label for="telefone">Telefone</label>
+							<input type="text" class="form-control" name="telefone" id="telefone" placeholder="(00)0000-0000">
+						</div>
+
+					</div>
 				</div>
 
-				<div class="form-group">
-					<label for="nome">Nome</label>
-					<input type="text" class="form-control" name="nome" id="nome" placeholder="Nome e Sobrenome">
-				</div>
-
-				<div class="form-group">
-					<label for="dataNasc" id="dataNascLabel">Data de nascimento</label>
-					<input type="date" class="form-control" name="dataNasc" id="dataNasc">
-				</div>
-
-				<div class="form-group">
-					<label for="telefone">Telefone</label>
-					<input type="text" class="form-control" name="telefone" id="telefone" placeholder="(00)0000-0000">
-				</div>
-
-				<div>
+				<div class="botoes">
 					<input type="button" class="btn btn-primary" name="enviar" value="Enviar" onclick="carregarDados()">
-				</div>
-				<div>
 					<input type="reset" class="btn btn-danger" name="limpar" value="Limpar">
 				</div>
 				
