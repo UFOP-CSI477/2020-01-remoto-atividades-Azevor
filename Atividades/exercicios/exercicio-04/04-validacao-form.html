@@ -65,35 +65,35 @@
                                     <div class="col-8">
 
                                         <div class="form-group">
-                                            <label for="documento">Documento</label>
+                                            <label for="documento" id="labelDocumento">Documento</label>
                                             <input type="text" class="form-control" name="documento" id="documento"
-                                                placeholder="Somente números">
+                                                placeholder="Somente números" onblur="removerTagAlerta()">
                                         </div>
 
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="nome">Nome</label>
+                                    <label for="nome" id="labelNome">Nome</label>
                                     <input type="text" class="form-control" name="nome" id="nome"
-                                        placeholder="Nome e Sobrenome">
+                                        placeholder="Nome e Sobrenome" onblur="removerTagAlerta()">
                                 </div>
 
                                 <div class="row">
                                     <div class="col">
 
                                         <div class="form-group">
-                                            <label for="dataNasc" id="dataNascLabel">Data de nascimento</label>
-                                            <input type="date" class="form-control" name="dataNasc" id="dataNasc">
+                                            <label for="dataNasc" id="labelDataNasc">Data de nascimento</label>
+                                            <input type="date" class="form-control" name="dataNasc" id="dataNasc" onblur="removerTagAlerta()">
                                         </div>
 
                                     </div>
                                     <div class="col">
 
                                         <div>
-                                            <label for="telefone">Telefone</label>
+                                            <label for="telefone" id="labelTelefone">Telefone</label>
                                             <input type="text" class="form-control" name="telefone" id="telefone"
-                                                placeholder="(00)0000-0000">
+                                                placeholder="(00)0000-0000" onblur="removerTagAlerta()">
                                         </div>
 
                                     </div>
@@ -103,9 +103,9 @@
                                     <div class="col-4">
 
                                         <div class="form-group">
-                                            <label for="cep">CEP:</label>
+                                            <label for="cep" id="labelCep">CEP:</label>
                                             <input type="text" class="form-control" name="cep" id="cep"
-                                                placeholder="00.000-000">
+                                                placeholder="00.000-000" onblur="removerTagAlerta()">
                                         </div>
 
                                     </div>
@@ -115,9 +115,9 @@
                                     <div class="col-8">
 
                                         <div class="form-group">
-                                            <label for="logradouro">Logradouro</label>
+                                            <label for="logradouro" id="labelLogradouro">Logradouro</label>
                                             <input type="text" class="form-control" name="logradouro" id="logradouro"
-                                                placeholder="Rua / Avenida / etc...">
+                                                placeholder="Rua / Avenida / etc..." onblur="removerTagAlerta()">
                                         </div>
 
                                     </div>
@@ -145,8 +145,8 @@
                                     <div class="col-8">
 
                                         <div class="form-group">
-                                            <label for="bairro">Bairro</label>
-                                            <input type="text" class="form-control" name="bairro" id="bairro">
+                                            <label for="bairro" id="labelBairro">Bairro</label>
+                                            <input type="text" class="form-control" name="bairro" id="bairro" onblur="removerTagAlerta()">
                                         </div>
 
                                     </div>
@@ -156,30 +156,29 @@
                                     <div class="col-5">
 
                                         <div class="form-group">
-                                            <label for="estado">Estado</label>
-                                            <input type="text" class="form-control" name="estado" id="estado">
+                                            <label for="estado" id="labelEstado">Estado</label>
+                                            <input type="text" class="form-control" name="estado" id="estado" onblur="removerTagAlerta()">
                                         </div>
 
                                     </div>
                                     <div class="col-7">
 
                                         <div class="form-group">
-                                            <label for="cidade">Cidade</label>
-                                            <input type="text" class="form-control" class="cidade" id="cidade">
+                                            <label for="cidade" id="labelCidade">Cidade</label>
+                                            <input type="text" class="form-control" name="cidade" id="cidade" onblur="removerTagAlerta()">
                                         </div>
 
                                     </div>
                                 </div>
 
                                 <div class="botoes">
-                                    <input type="button" class="btn btn-primary" name="enviar" value="Enviar"
-                                        onclick="validar()">
+                                    <input type="button" class="btn btn-primary" value="Enviar" onclick="validar()">
                                     <input type="reset" class="btn btn-danger" name="limpar" value="Limpar">
                                 </div>
 
                             </form>
 
-                            <div class="alert alert-danger text-center d-none">Preencha o campo <span
+                            <div class="alert alert-danger text-center d-none" id="tag-alerta">Preencha o campo <span
                                     id="campo-alerta"></span></div>
 
                             <div id="outputTipoPessoa"></div>

@@ -9,7 +9,7 @@ document.getElementById("pessoaFisica").onclick = function() {
             // Alterar o texto placeholder do campo nome
             document.getElementById("nome").placeholder = "Nome e Sobrenome";
             // Alterar o label data
-            document.getElementById("dataNascLabel").innerHTML = "Data de nascimento";
+            document.getElementById("labelDataNasc").innerHTML = "Data de nascimento";
         }
     }
 };
@@ -25,7 +25,7 @@ document.getElementById("pessoaJuridica").onclick = function() {
             // Alterar o texto placeholder do campo nome
             document.getElementById("nome").placeholder = "Nome Fantasia";
             // Alterar o label data
-            document.getElementById("dataNascLabel").innerHTML = "Início da atividade";
+            document.getElementById("labelDataNasc").innerHTML = "Início da atividade";
         }
     }
 };
