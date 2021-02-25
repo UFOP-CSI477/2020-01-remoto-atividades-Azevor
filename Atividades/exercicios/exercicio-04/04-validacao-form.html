@@ -67,7 +67,9 @@
                                         <div class="form-group">
                                             <label for="documento" id="labelDocumento">Documento</label>
                                             <input type="text" class="form-control" name="documento" id="documento"
-                                                placeholder="Somente números" onblur="removerTagAlerta()">
+                                                placeholder="Somente números" 
+                                                onblur="removerTagAlerta(); mascaraDeDocumento(this)" 
+                                                onfocus="tiraHifen(this)">
                                         </div>
 
                                     </div>
@@ -93,7 +95,9 @@
                                         <div>
                                             <label for="telefone" id="labelTelefone">Telefone</label>
                                             <input type="text" class="form-control" name="telefone" id="telefone"
-                                                placeholder="(00)0000-0000" onblur="removerTagAlerta()">
+                                                placeholder="(00)0000-0000" 
+                                                onblur="removerTagAlerta(); mascaraDeTelefone(this)" 
+                                                onfocus="tiraHifen(this)">
                                         </div>
 
                                     </div>
@@ -105,7 +109,9 @@
                                         <div class="form-group">
                                             <label for="cep" id="labelCep">CEP:</label>
                                             <input type="text" class="form-control" name="cep" id="cep"
-                                                placeholder="00.000-000" onblur="removerTagAlerta()">
+                                                placeholder="00.000-000" 
+                                                onblur="removerTagAlerta(); mascaraDeCep(this)" 
+                                                onfocus="tiraHifen(this)">
                                         </div>
 
                                     </div>
@@ -209,6 +215,7 @@
     </div>
 
     <script type="text/javascript" src="./js/vigiaRadioButton.js"></script>
+    <script type="text/javascript" src="./js/inputMaskFormat.js"></script>
     <script type="text/javascript" src="./js/validarFormulario.js"></script>
     <script type="text/javascript" src="./js/carregarDadosFormulario.js"></script>
 

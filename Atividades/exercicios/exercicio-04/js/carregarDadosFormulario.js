@@ -39,9 +39,9 @@ function pessoaSelected() {
 function preencherCampos(pessoa, tipoPessoa) {
     document.getElementById("outputTipoPessoa").innerHTML = "<h2>Verificar dados:</h2>";
     document.getElementById("outputTelefone").innerHTML = `<strong>Tel.:</strong> ${pessoa.telefone}`;
-    document.getElementById("outputEndereco").innerHTML = `<strong>Endereço completo:</strong><b>
-    Rua ${pessoa.logradouro}, ${pessoa.numero} Bairro ${pessoa.bairro}<br>
-    ${pessoa.cidade} / ${pessoa.estado} - CEP: ${pessoa.cep}`;
+    document.getElementById("outputEndereco").innerHTML = `<strong>Endereço completo:</strong><br>
+    ${pessoa.logradouro}, ${pessoa.numero} Bairro ${pessoa.bairro}<br>
+    ${pessoa.cidade} / ${pessoa.estado} - CEP: ${pessoa.cep}<br>`;
 
     if(tipoPessoa == 'PF') {
         document.getElementById("outputDocumento").innerHTML = `<strong>Documento:</strong> ${pessoa.doc}`;
@@ -68,7 +68,6 @@ function carregarDados() {
         pessoa.cnpj = document.getElementById("documento").value;
         pessoa.nomeFantasia = document.getElementById("nome").value;
         pessoa.dataInicioAtividade = document.getElementById("dataNasc").value;
-        // pessoa.telefone = document.getElementById("telefone").value;
     }
     pessoa.telefone = document.getElementById("telefone").value;
     pessoa.logradouro = document.getElementById("logradouro").value;
