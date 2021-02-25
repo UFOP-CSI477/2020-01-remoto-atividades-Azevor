@@ -3,6 +3,13 @@ function pessoaFisica() {
     var nome;
     var datanasc;
     var telefone;
+    var cep;
+    var logradouro;
+    var numero;
+    var complemento;
+    var bairro;
+    var estado;
+    var cidade;
 }
 
 function pessoaJuridica() {
@@ -10,6 +17,13 @@ function pessoaJuridica() {
     var nomeFantasia;
     var dataInicioAtividade;
     var telefone;
+    var cep;
+    var logradouro;
+    var numero;
+    var complemento;
+    var bairro;
+    var estado;
+    var cidade;
 }
 
 function pessoaSelected() {
@@ -25,6 +39,9 @@ function pessoaSelected() {
 function preencherCampos(pessoa, tipoPessoa) {
     document.getElementById("outputTipoPessoa").innerHTML = "<h2>Verificar dados:</h2>";
     document.getElementById("outputTelefone").innerHTML = `<strong>Tel.:</strong> ${pessoa.telefone}`;
+    document.getElementById("outputEndereco").innerHTML = `<strong>Endereço completo:</strong><b>
+    Rua ${pessoa.logradouro}, ${pessoa.numero} Bairro ${pessoa.bairro}<br>
+    ${pessoa.cidade} / ${pessoa.estado} - CEP: ${pessoa.cep}`;
 
     if(tipoPessoa == 'PF') {
         document.getElementById("outputDocumento").innerHTML = `<strong>Documento:</strong> ${pessoa.doc}`;
@@ -46,13 +63,22 @@ function carregarDados() {
         pessoa.doc = document.getElementById("documento").value;
         pessoa.nome = document.getElementById("nome").value;
         pessoa.datanasc = document.getElementById("dataNasc").value;
-        pessoa.telefone = document.getElementById("telefone").value;
     } else if(tipoPessoa == 'PJ') {
         var pessoa = new pessoaJuridica();
         pessoa.cnpj = document.getElementById("documento").value;
         pessoa.nomeFantasia = document.getElementById("nome").value;
         pessoa.dataInicioAtividade = document.getElementById("dataNasc").value;
-        pessoa.telefone = document.getElementById("telefone").value;
+        // pessoa.telefone = document.getElementById("telefone").value;
     }
+    pessoa.telefone = document.getElementById("telefone").value;
+    pessoa.logradouro = document.getElementById("logradouro").value;
+    pessoa.cep = document.getElementById("cep").value;
+    pessoa.logradouro = document.getElementById("logradouro").value;
+    pessoa.numero = document.getElementById("numero-da-casa").value;
+    pessoa.complemento = document.getElementById("complemento").value;
+    pessoa.bairro = document.getElementById("bairro").value;
+    pessoa.estado = document.getElementById("estado").value;
+    pessoa.cidade = document.getElementById("cidade").value;
+
     preencherCampos(pessoa, tipoPessoa);
 }
