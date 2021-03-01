@@ -51,7 +51,7 @@ function validar() {
 }
 
 function campoVazio(campo, tipo) {
-	if(campo.value == "") {
+	if(campo.value == "" || campo.selectedIndex == 0) {
 		setTextoAlerta('Preencher campo ' + tipo);
 		incluirTagAlerta();
 		campo.focus();
@@ -83,6 +83,10 @@ function isDocumentoValido(campo) {
 	}
 	return true;
 }
+
+// function isSelecaoValida(campoSelect) {
+//     return campoSelect.selectedIndex != 0;
+// }
 
 function incluirTagAlerta() {
 	document.getElementById('tag-alerta').classList.remove('d-none');

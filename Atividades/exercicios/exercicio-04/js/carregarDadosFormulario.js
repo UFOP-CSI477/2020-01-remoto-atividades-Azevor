@@ -42,15 +42,17 @@ function preencherCampos(pessoa, tipoPessoa) {
     document.getElementById("outputEndereco").innerHTML = `<strong>Endereço completo:</strong><br>
     ${pessoa.logradouro}, ${pessoa.numero} Bairro ${pessoa.bairro}<br>
     ${pessoa.cidade} / ${pessoa.estado} - CEP: ${pessoa.cep}<br>`;
+    document.getElementById("outputPrevisaoTempo").innerHTML = `Temperatura em ${pessoa.cidade}: <span id="infoTemperatura"></span> °C`;
+    previsao(pessoa.cidade);
 
     if(tipoPessoa == 'PF') {
         document.getElementById("outputDocumento").innerHTML = `<strong>Documento:</strong> ${pessoa.doc}`;
         document.getElementById("outputNome").innerHTML = `<strong>Nome:</strong> ${pessoa.nome}`;
-        document.getElementById("outputData").innerHTML = `<strong>Data de nascimento:</strong> ${pessoa.datanasc}`;
+        document.getElementById("outputData").innerHTML = `<strong>Data de nascimento:</strong> ${dataFormat(pessoa.datanasc)}`;
     } else if(tipoPessoa == 'PJ') {
         document.getElementById("outputDocumento").innerHTML = `<strong>CNPJ:</strong> ${pessoa.cnpj}`;
         document.getElementById("outputNome").innerHTML = `<strong>Nome da empresa:</strong> ${pessoa.nomeFantasia}`;
-        document.getElementById("outputData").innerHTML = `<strong>Início das atividades:</strong> ${pessoa.dataInicioAtividade}`;
+        document.getElementById("outputData").innerHTML = `<strong>Início das atividades:</strong> ${dataFormat(pessoa.dataInicioAtividade)}`;
     }
 }
 
@@ -76,8 +78,17 @@ function carregarDados() {
     pessoa.numero = document.getElementById("numero-da-casa").value;
     pessoa.complemento = document.getElementById("complemento").value;
     pessoa.bairro = document.getElementById("bairro").value;
-    pessoa.estado = document.getElementById("estado").value;
-    pessoa.cidade = document.getElementById("cidade").value;
+    estadoSelected = document.getElementById("estado");
+    pessoa.estado = estadoSelected[estadoSelected.selectedIndex].text.slice(0, 2);
+    cidadeSelected = document.getElementById("cidade");
+    pessoa.cidade = cidadeSelected[cidadeSelected.selectedIndex].text;
 
     preencherCampos(pessoa, tipoPessoa);
+}
+
+function dataFormat(data) {
+    ano = data.slice(0, 4);
+    mes = data.slice(5, 7);
+    dia = data.slice(8, 10);
+    return `${dia}/${mes}/${ano}`;
 }

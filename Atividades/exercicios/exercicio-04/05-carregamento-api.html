@@ -163,10 +163,10 @@
                                     <div class="col-5">
 
                                         <div class="form-group">
-                                            <label for="estado" id="estadoLabel">Estado</label>
+                                            <label for="estado" id="labelEstado">Estado</label>
                                             <select class="form-select" aria-label=".form-select example"
                                                 name="estado" id="estado" 
-                                                onblur="removerTagAlerta()" onclick="carregarCidades()">
+                                                onblur="removerTagAlerta()" onchange="carregarCidades()">
                                                 <option value="0">Selecione:</option>
                                             </select>
                                         </div>
@@ -201,6 +201,8 @@
                             <div id="outputData"></div>
                             <div id="outputTelefone"></div>
                             <div id="outputEndereco"></div>
+                            <br>
+                            <div id="outputPrevisaoTempo"></div>
 
                         </div>
 
@@ -227,6 +229,7 @@
     <script type="text/javascript" src="./js/inputMaskFormat.js"></script>
     <script type="text/javascript" src="./js/validarFormulario.js"></script>
     <script type="text/javascript" src="./js/carregarDadosFormulario.js"></script>
+    <script type="text/javascript" src="./js/previsaoClima.js"></script>
 
 </body>
 
