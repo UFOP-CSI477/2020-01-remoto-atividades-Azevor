@@ -8,16 +8,24 @@
 ### Resumo
 
   O projeto consiste no controle pessoal de finanças para registro de entrada (receitas) e saída (despesas), e visualização de balanço financeiro, dentre outras informações desejáveis, distribuídos mensalmente.
+  Para a implementação será utilizado o framework laravel, recursos de desenvolvimento web (html, css, js, etc) e banco de dados mysql para armazenamento dos registros diversos.
 
 <!-- Apresentar o tema. -->
 ### 1. Tema
 
-  O trabalho final tem como tema o desenvolvimento de um sistema de registro financeiro para controle pessoal.
+  Este trabalho consiste no desenvolvimento de um sistema de registro financeiro para controle pessoal.
 
 <!-- Descrever e limitar o escopo da aplicação. -->
 ### 2. Escopo
 
-  Este projeto terá as seguintes funcionalidades...
+  O objetivo do sistema é fornecer funcionalidades de armazenamento e manipulação de dados financeiros informados pelo usuário, dentre outras:
+  * Cadastro de usuário;
+  * Autenticação;
+  * Cadastro de categorias;
+  * Registro de entrada (receitas);
+  * Registro de saída (despesas);
+  * Gerar relatório financeiro por período;
+  * Exclusão de registro financeiro;
 
 <!-- Apresentar restrições de funcionalidades e de escopo. -->
 ### 3. Restrições
