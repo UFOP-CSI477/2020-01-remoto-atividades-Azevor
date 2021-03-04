@@ -27,6 +27,9 @@
   * Gerar relatório financeiro por período;
   * Exclusão de registro financeiro;
 
+  Relacionamento inicial do banco de dados
+  ![Estrutura dos dados](./Projeto/Escopo/img/Gerenpilas.png)
+
 <!-- Apresentar restrições de funcionalidades e de escopo. -->
 ### 3. Restrições
 
