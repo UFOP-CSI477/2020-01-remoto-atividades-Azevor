@@ -4,21 +4,140 @@
 <!-- Gildo T. Azevedo - UFOP 2020/1 Remoto -->
 
 <!DOCTYPE html>
-<html>
+<html lang="br" dir="ltr">
 <head>
-	<meta charset="utf-8" dir="ltr">
+	<meta charset="utf-8">
 	<title>Corrida de Rolimã</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="./css/estilo.css">
 </head>
-<body>
+<body onload="preencherCamposTeste()">
 
-	<head></head>
+	<head>
 
-	<main></main>
+		<div class="jumbotron">
+			<h1>Corrida de Rolimã</h1>
+		</div>
+		
+	</head>
 
-	<div class="row"></div>
+	<main>
+
+		<div class="row">
+
+			<div class="col">
+
+				<h2>Competidores</h2>
+				<p>Preencha a tabela abaixo com até 6 participantes</p>
+
+				<div class="table-responsive">
+					<table class="table text-center">
+						<form id="frmCompetidores">
+
+							<thead>
+								<tr>
+									<th>Largada</th>
+									<th>Competidor(a)</th>
+									<th>Tempo (s)</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<tr>
+									<td><input type="text" class="form-control text-center" name="largada" value="1" disabled=""></td>
+									<td><input type="text" class="form-control" name="nome" maxlength="20"></td>
+									<td><input type="text" class="form-control" name="tempo" maxlength="4"></td>
+								</tr>
+
+								<tr>
+									<td><input type="text" class="form-control text-center" name="largada" value="2" disabled=""></td>
+									<td><input type="text" class="form-control" name="nome" maxlength="20"></td>
+									<td><input type="text" class="form-control" name="tempo" maxlength="4"></td>
+								</tr>
+
+								<tr>
+									<td><input type="text" class="form-control text-center" name="largada" value="3" disabled=""></td>
+									<td><input type="text" class="form-control" name="nome" maxlength="20"></td>
+									<td><input type="text" class="form-control" name="tempo" maxlength="4"></td>
+								</tr>
+
+								<tr>
+									<td><input type="text" class="form-control text-center" name="largada" value="4" disabled=""></td>
+									<td><input type="text" class="form-control" name="nome" maxlength="20"></td>
+									<td><input type="text" class="form-control" name="tempo" maxlength="4"></td>
+								</tr>
+
+								<tr>
+									<td><input type="text" class="form-control text-center" name="largada" value="5" disabled=""></td>
+									<td><input type="text" class="form-control" name="nome" maxlength="20"></td>
+									<td><input type="text" class="form-control" name="tempo" maxlength="4"></td>
+								</tr>
+
+								<tr>
+									<td><input type="text" class="form-control text-center" name="largada" value="6" disabled=""></td>
+									<td><input type="text" class="form-control" name="nome" maxlength="20"></td>
+									<td><input type="text" class="form-control" name="tempo" maxlength="4"></td>
+								</tr>
+							</tbody>
+
+							<tfoot>
+								<tr>
+									<td colspan="2"><input type="button" class="btn btn-primary" value="Classificar"></td>
+									<td><input type="reset" class="btn btn-danger" value="Limpar"></td>
+								</tr>
+							</tfoot>
+
+						</form>
+					</table>
+				</div>
+
+
+			</div>
+
+			<div class="col">
+
+				<h2>Resultado</h2>
+				<p>Tabela de classificação (ordem ascendente de tempo)</p>
+
+				<div class="table-responsive">
+					<table class="table text-center">
+						<form id="frmResultado">
+
+							<thead>
+								<tr>
+									<th>Posição</th>
+									<th>Largada</th>
+									<th>Competidor(a)</th>
+									<th>Tempo (s)</th>
+									<th>Resultado</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<tr><td></td></tr>
+								<tr><td></td></tr>
+								<tr><td></td></tr>
+								<tr><td></td></tr>
+								<tr><td></td></tr>
+								<tr><td></td></tr>
+							</tbody>
+
+							<tfoot></tfoot>
+
+						</form>
+					</table>
+				</div>
+			
+			</div>
+
+		</div>
+
+	</main>
 
 	<footer></footer>
+
+	<script type="text/javascript" src="./js/validar.js"></script>
+	<script type="text/javascript" src="./js/classificar.js"></script>
 
 </body>
 </html>
