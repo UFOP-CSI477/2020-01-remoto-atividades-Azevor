@@ -13,149 +13,134 @@
 	<link rel="stylesheet" type="text/css" href="./css/01-corrida-estilo.css">
 </head>
 
-<body onload="preencherCamposTeste()">
+<body>
 
-	<head>
+	<div class="container">
 
-		<div class="jumbotron">
-			<h1>Corrida de Rolimã</h1>
-		</div>
+		<head>
 
-	</head>
-
-	<main>
-
-		<div class="row">
-
-			<div class="col">
-
-				<h2>Competidores</h2>
-				<p>Preencha a tabela abaixo com até 6 participantes</p>
-
-				<div class="table-responsive">
-					<table class="table text-center">
-						<form id="frmCompetidores">
-
-							<thead>
-								<tr>
-									<th>Largada</th>
-									<th>Competidor(a)</th>
-									<th>Tempo (s)</th>
-								</tr>
-							</thead>
-
-							<tbody>
-								<tr>
-									<td><input type="text" class="form-control text-center" name="largada" value="1"
-											disabled=""></td>
-									<td><input type="text" class="form-control" name="nome" maxlength="20"></td>
-									<td><input type="text" class="form-control" name="tempo" maxlength="4"></td>
-								</tr>
-
-								<tr>
-									<td><input type="text" class="form-control text-center" name="largada" value="2"
-											disabled=""></td>
-									<td><input type="text" class="form-control" name="nome" maxlength="20"></td>
-									<td><input type="text" class="form-control" name="tempo" maxlength="4"></td>
-								</tr>
-
-								<tr>
-									<td><input type="text" class="form-control text-center" name="largada" value="3"
-											disabled=""></td>
-									<td><input type="text" class="form-control" name="nome" maxlength="20"></td>
-									<td><input type="text" class="form-control" name="tempo" maxlength="4"></td>
-								</tr>
-
-								<tr>
-									<td><input type="text" class="form-control text-center" name="largada" value="4"
-											disabled=""></td>
-									<td><input type="text" class="form-control" name="nome" maxlength="20"></td>
-									<td><input type="text" class="form-control" name="tempo" maxlength="4"></td>
-								</tr>
-
-								<tr>
-									<td><input type="text" class="form-control text-center" name="largada" value="5"
-											disabled=""></td>
-									<td><input type="text" class="form-control" name="nome" maxlength="20"></td>
-									<td><input type="text" class="form-control" name="tempo" maxlength="4"></td>
-								</tr>
-
-								<tr>
-									<td><input type="text" class="form-control text-center" name="largada" value="6"
-											disabled=""></td>
-									<td><input type="text" class="form-control" name="nome" maxlength="20"></td>
-									<td><input type="text" class="form-control" name="tempo" maxlength="4"></td>
-								</tr>
-							</tbody>
-
-							<tfoot>
-								<tr>
-									<td colspan="2"><input type="button" class="btn btn-primary" value="Classificar" onclick="classificarCompetidores()">
-									</td>
-									<td><input type="reset" class="btn btn-danger" value="Limpar"></td>
-								</tr>
-							</tfoot>
-
-						</form>
-					</table>
-				</div>
-
-
+			<div class="jumbotron">
+				<h1>Corrida de Rolimã</h1>
 			</div>
 
-			<div class="col">
+		</head>
 
-				<h2>Resultado</h2>
-				<p>Tabela de classificação (ordem ascendente de tempo)</p>
+		<main>
 
-				<div class="table-responsive">
-					<table class="table text-center">
-						<form id="frmResultado">
+			<div class="row">
 
-							<thead>
-								<tr>
-									<th>Posição</th>
-									<th>Largada</th>
-									<th>Competidor(a)</th>
-									<th>Tempo (s)</th>
-									<th>Resultado</th>
-								</tr>
-							</thead>
+				<div class="col">
 
-							<tbody>
-								<tr>
-									<td></td>
-								</tr>
-								<tr>
-									<td></td>
-								</tr>
-								<tr>
-									<td></td>
-								</tr>
-								<tr>
-									<td></td>
-								</tr>
-								<tr>
-									<td></td>
-								</tr>
-								<tr>
-									<td></td>
-								</tr>
-							</tbody>
+					<h2>Competidores</h2>
+					<p>Preencha a tabela abaixo com até 6 participantes</p>
 
-							<tfoot></tfoot>
+					<div class="table-responsive">
+						<table class="table text-center">
+							<form id="frmCompetidores">
 
-						</form>
-					</table>
+								<thead>
+									<tr>
+										<th>Largada</th>
+										<th>Competidor(a)</th>
+										<th>Tempo (s)</th>
+									</tr>
+								</thead>
+
+								<tbody>
+									<tr>
+										<td><span id="campo-largada[0]" name="largada">1</span></span><!-- <input type="text" id="campo-largada[0]" class="form-control text-center" name="largada" value="1"
+											disabled> --></td>
+										<td><input type="text" id="campo-nome[0]" class="form-control" name="nome" maxlength="20" onblur="habilitarProximaLinha(this)"></td>
+										<td><input type="text" id="campo-tempo[0]" class="form-control" name="tempo"></td>
+									</tr>
+
+									<tr>
+										<td><span id="campo-largada[1]" name="largada">2</span><!-- <input type="text" id="campo-largada[1]" class="form-control text-center" name="largada" value="2" disabled> --></td>
+										<td><input type="text" id="campo-nome[1]" class="form-control" name="nome" maxlength="20" onblur="habilitarProximaLinha(this)" disabled></td>
+										<td><input type="text" id="campo-tempo[1]" class="form-control" name="tempo" disabled></td>
+									</tr>
+
+									<tr>
+										<td><span id="campo-largada[2]" name="largada">3</span><!-- <input type="text" id="campo-largada[2]" class="form-control text-center" name="largada" value="3" disabled> --></td>
+										<td><input type="text" id="campo-nome[2]" class="form-control" name="nome" maxlength="20" onblur="habilitarProximaLinha(this)" disabled></td>
+										<td><input type="text" id="campo-tempo[2]" class="form-control" name="tempo" disabled></td>
+									</tr>
+
+									<tr>
+										<td><span id="campo-largada[3]" name="largada">4</span><!-- <input type="text" id="campo-largada[3]" class="form-control text-center" name="largada" value="4" disabled> --></td>
+										<td><input type="text" id="campo-nome[3]" class="form-control" name="nome" maxlength="20" onblur="habilitarProximaLinha(this)" disabled></td>
+										<td><input type="text" id="campo-tempo[3]" class="form-control" name="tempo" disabled></td>
+									</tr>
+
+									<tr>
+										<td><span id="campo-largada[4]" name="largada">5</span><!-- <input type="text" id="campo-largada[4]" class="form-control text-center" name="largada" value="5" disabled> --></td>
+										<td><input type="text" id="campo-nome[4]" class="form-control" name="nome" maxlength="20" onblur="habilitarProximaLinha(this)" disabled></td>
+										<td><input type="text" id="campo-tempo[4]" class="form-control" name="tempo" disabled></td>
+									</tr>
+
+									<tr>
+										<td><span id="campo-largada[5]" name="largada">6<!-- <input type="text" id="campo-largada[5]" class="form-control text-center" name="largada" value="6" disabled> --></td>
+										<td><input type="text" id="campo-nome[5]" class="form-control" name="nome" maxlength="20" disabled></td>
+										<td><input type="text" id="campo-tempo[5]" class="form-control" name="tempo" disabled></td>
+									</tr>
+								</tbody>
+
+								<tfoot>
+									<tr>
+										<td colspan="2"><input type="button" class="btn btn-primary" value="Classificar" onclick="validarCampos()">
+										</td>
+										<td><input type="reset" class="btn btn-danger" value="Limpar"></td>
+									</tr>
+								</tfoot>
+
+							</form>
+						</table>
+					</div>
+
+
+				</div>
+			</div>
+
+			<div class="row">
+
+				<div class="col">
+
+					<h2>Resultado</h2>
+					<p>Tabela de classificação (ordem ascendente de tempo)</p>
+
+					<div class="table-responsive">
+						<table class="table text-center" id="tabela-resultado">
+							<form id="frmResultado">
+
+								<thead>
+									<tr>
+										<th>Posição</th>
+										<th>Largada</th>
+										<th>Competidor(a)</th>
+										<th>Tempo (s)</th>
+										<th>Resultado</th>
+									</tr>
+								</thead>
+
+								<tbody>
+									<!-- Tabela de resultado -->
+								</tbody>
+
+								<tfoot></tfoot>
+
+							</form>
+						</table>
+					</div>
+
 				</div>
 
 			</div>
 
-		</div>
+		</main>
 
-	</main>
+		<footer></footer>
 
-	<footer></footer>
+	</div>
 
 	<script type="text/javascript" src="./js/01-corrida-validar.js"></script>
 	<script type="text/javascript" src="./js/01-corrida-classificar.js"></script>
