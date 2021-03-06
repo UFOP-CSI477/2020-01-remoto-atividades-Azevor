@@ -28,6 +28,7 @@ function habilitarProximaLinha(obj) {
 */
 function validarCampos() {
 	var listaCompetidores = lerDados();
+	addClass('alerta','d-none');
 
 	if (!minimoCompetidores(listaCompetidores, 3)) {
 		return;
@@ -35,7 +36,7 @@ function validarCampos() {
 
 	for (index in listaCompetidores) {
 		if(!isNum(listaCompetidores[index][0])) {
-			console.log(`${listaCompetidores[index][0]} não é \"tempo\" válido!`);
+			exibirAlerta(listaCompetidores[index][0], 'não é \"tempo\" válido!');
 			document.getElementsByName("tempo")[index].focus();
 			return;
 		}
@@ -57,8 +58,9 @@ function isNum(entrada) {
 * @return true se número de competidores for maior ou igual a 3.
 */
 function minimoCompetidores(listaCompetidores, qte) {
+	addClass('alerta', 'd-none');
 	if (listaCompetidores.length < 3) {
-		console.log('Mínimo três competidores');
+		exibirAlerta('', 'Mínimo três competidores');
 		return false;
 	}
 	return true;
@@ -68,6 +70,39 @@ function minimoCompetidores(listaCompetidores, qte) {
 * Exibe mensagem de alerta para o usuário.
 * 
 */
-function alerta(msg) {
-	alert(msg);
+function exibirAlerta(campo, msg) {
+	document.getElementById("texto-alerta").innerHTML = `${campo} ${msg}`;
+	removeClass('alerta', 'd-none');
+}
+
+/**
+ * Adicionar classe em uma tag.
+ * 
+ * @param (id, classe)
+ */
+function addClass(id, classe) {
+	var campo = document.getElementById(id);
+	var classes = campo.className.split(' ');
+	var indice = classes.indexOf(classe);
+
+	if(indice === -1) {
+		classes.push(classe);
+		campo.className = classes.join(' ');
+	}
+}
+
+/**
+ * Remover classe de uma tag.
+ * 
+ * @param (id, classe)
+ */
+function removeClass(id, classe) {
+	var campo = document.getElementById(id);
+	var classes = campo.className.split(' ');
+	var indice = classes.indexOf(classe);
+
+	if(indice > -1) {
+		classes.splice(indice, 1);
+	}
+	campo.className = classes.join(' ');
 }

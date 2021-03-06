@@ -4,3 +4,26 @@
 	border-right: none;
 	border-radius: 0px;
 }
+
+.area {
+	background-color: #eeeeee;
+	box-shadow: 3px 6px 8px 3px rgba(100, 100, 100, 0.3);
+	border-radius: 5px;
+}
+
+#alerta {
+	margin: 10px 30px 0px 30px;
+}
+
+h1 {
+    text-align: center;
+}
+
+body {
+	padding-top: 5%;
+    background: #cbd9ea;
+}
+
+table {
+	margin-top: 20px;
+}

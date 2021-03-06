@@ -8,17 +8,7 @@ var numeroDeLinhas = 0;
 function classificarCompetidores() {
     limparTabelaSaida();
     var listaCompetidores = lerDados();
-    // Testando saída da lista
-    // for (index in listaCompetidores) {
-    //     console.log(`Largada: ${listaCompetidores[index][2]} Nome: ${listaCompetidores[index][1]} - Tempo = ${listaCompetidores[index][0]} segundos`);
-    // }
-    // Fim teste
     const listaOrdenada = ordenarPorTempo(listaCompetidores);
-    // Testando saída da lista ordenada
-    // for (index in listaOrdenada) {
-    //     console.log(`Posição: ${listaOrdenada[index][0]} Largada: ${listaOrdenada[index][1]} Nome: ${listaOrdenada[index][2]} Tempo: ${listaOrdenada[index][3]} Resultado: ${listaOrdenada[index][4]}`);
-    // }
-    // Fim teste
     for (index in listaOrdenada) {
         novaLinhaTabelaSaida(listaOrdenada[index][0], listaOrdenada[index][1], listaOrdenada[index][2], listaOrdenada[index][3], listaOrdenada[index][4]);
     }
