@@ -1,0 +1,123 @@
+<!-- Calculadora simples -->
+<!-- Gildo T. Azevedo - UFOP 2020/1 Remoto -->
+
+<!DOCTYPE html>
+<html lang="br" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Calculadora</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./css/02-calculadora.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+
+            <div class="jumbotron">
+                <h1 class="display-6 text-center">Calculadora</h1>
+            </div>
+
+        </header>
+
+        <main>
+
+            <div class="calc-painel">
+
+                <div class="calc-contorno-externo">
+                    <div class="calc-contorno-interno">
+
+                        <form name="calc_visor">
+
+                            <table>
+
+                                <tr>
+                                    <td colspan="5"><input type="text" id="calc-visor" name="visor" value="0" disabled>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><input type="button" id="botao-backspace" class="calc-botao" value="←"
+                                            onClick="backSpace()"></td>
+                                    <td><input type="button" id="botao-apaga" class="calc-botao" value="C"
+                                            onClick="apagaVisor()"></td>
+                                    <td><input type="button" id="botao-sinal" class="calc-botao" value="+/-"
+                                            onClick="inverteSinal()"></td>
+                                    <td><input type="button" id="botao-par-esquerda" class="calc-botao" value="("
+                                            onClick="inserirValor(value)"></td>
+                                    <td><input type="button" id="botao-par-direita" class="calc-botao" value=")"
+                                            onClick="inserirValor(value)"></td>
+                                </tr>
+
+                                <tr>
+                                    <td><input type="button" id="botao-7" class="calc-botao" value="7"
+                                            onClick="inserirValor(value)"></td>
+                                    <td><input type="button" id="botao-8" class="calc-botao" value="8"
+                                            onClick="inserirValor(value)"></td>
+                                    <td><input type="button" id="botao-9" class="calc-botao" value="9"
+                                            onClick="inserirValor(value)"></td>
+                                    <td><input type="button" id="botao-divide" class="calc-botao" value="/"
+                                            onClick="inserirValor(value)"></td>
+                                    <td><input type="button" id="botao-raiz" class="calc-botao" value="√"
+                                            onClick="calculaRaiz()"></td>
+                                </tr>
+
+                                <tr>
+                                    <td><input type="button" id="botao-4" class="calc-botao" value="4"
+                                            onClick="inserirValor(value)"></td>
+                                    <td><input type="button" id="botao-5" class="calc-botao" value="5"
+                                            onClick="inserirValor(value)"></td>
+                                    <td><input type="button" id="botao-6" class="calc-botao" value="6"
+                                            onClick="inserirValor(value)"></td>
+                                    <td><input type="button" id="botao-multiplica" class="calc-botao" value="*"
+                                            onClick="inserirValor(value)"></td>
+                                    <td><input type="button" id="botao-potencia" class="calc-botao" value="x²"
+                                            onClick="calculaPotencia()"></td>
+                                </tr>
+
+                                <tr>
+                                    <td><input type="button" id="botao-1" class="calc-botao" value="1"
+                                            onClick="inserirValor(value)"></td>
+                                    <td><input type="button" id="botao-2" class="calc-botao" value="2"
+                                            onClick="inserirValor(value)"></td>
+                                    <td><input type="button" id="botao-3" class="calc-botao" value="3"
+                                            onClick="inserirValor(value)"></td>
+                                    <td><input type="button" id="botao-subtrai" class="calc-botao" value="-"
+                                            onClick="inserirValor(value)"></td>
+                                    <td rowspan="2"><input type="button" id="botao-resultado" class="calc-botao"
+                                            value="=" onClick="calculaResultado()"></td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="2"><input type="button" id="botao-0" class="calc-botao" value="0"
+                                            onClick="inserirValor(value)"></td>
+                                    <td><input type="button" id="botao-decimal" class="calc-botao" value="."
+                                            onClick="inserirValor(value)"></td>
+                                    <td><input type="button" id="botao-soma" class="calc-botao" value="+"
+                                            onClick="inserirValor(value)"></td>
+                                </tr>
+
+                            </table>
+
+                    </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </main>
+
+        <footer></footer>
+
+    </div>
+
+    <script type="text/javascript" src="./js/02-calculadora.js"></script>
+
+</body>
+
+</html>
