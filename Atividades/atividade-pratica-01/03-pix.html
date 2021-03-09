@@ -1,0 +1,184 @@
+<!-- Controle de envio e recebimento PIX -->
+<!-- Gildo T. Azevedo - UFOP 2020/1 Remoto -->
+
+<!DOCTYPE html>
+<html lang="br" dir="ltr">
+
+<head>
+
+	<meta charset="utf-8">
+	<title>Gerenciamento de PIX</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="./css/03-pix-estilo.css">
+	
+</head>
+
+<body>
+
+	<div class="container">
+
+		<div class="principal">
+
+			<header>
+
+				<div class="jumbotron">
+
+					<div class="row">
+
+						<div class="col-3">
+							<img src="./img/pix-bc-logo.png" class="img-fluid" alt="logo-pix">
+						</div>
+
+						<div class="col">
+							<h1 class="display-4">Controle de transações</h1>
+						</div>
+
+					</div>
+
+				</div>
+
+			</header>
+
+			<main>
+
+				<div class="row">
+					<div class="col-6" id="input-area">
+
+						<h2>Efetuar nova transação</h2>
+						<form id="form-input">
+
+							<div class="form-group">
+								<label for="operacao" class="form-label">Selecione a operação</label>
+								<select class="form-control" name="operacao">
+									<option>&ltTipo&gt</option>
+									<option>PAGAR</option>
+									<option>RECEBER</option>
+								</select>
+							</div>
+
+							<div class="form-group">
+								<label for="valor" class="form-label">Informe o valor da operação</label>
+								<input type="text" name="valor" id="valor" class="form-control" placeholder="R$ 0,00">
+							</div>
+
+							<div class="form-group">
+								<label for="tipo-chave" class="form-label">Selecione o tipo de chave</label>
+								<select class="form-control">
+									<option>&ltTipo&gt</option>
+									<option>CPF</option>
+									<option>CNPJ</option>
+									<option>E-mail</option>
+									<option>Celular</option>
+									<option>Aleatória</option>
+								</select>
+							</div>
+
+							<div class="form-group">
+								<label for="chave" class="form-label">Entre com a chave pix</label>
+								<input type="text" name="chave" id="chave" class="form-control" placeholder="(informe aqui sua chave pix)">
+							</div>
+
+							<div class="form-group">
+								<div class="row">
+									<div class="col-4">
+										<label for="cod-banco" class="form-label">Cód. Banco</label>
+										<input type="text" name="cod-banco" id="cod-banco" class="form-control">
+									</div>
+									<div class="col">
+										<label for="banco" class="form-label">Banco</label>
+										<input type="text" name="banco" id="banco" class="form-control">
+									</div>
+								</div>
+							</div>
+
+							<div class="btn btn-group d-grid gap-2">
+								<button class="btn btn-primary" type="button" onclick="carregarFormulario()">FINALIZAR</button>
+							</div>
+
+						</form>
+
+					</div>
+
+					<div class="col-6" id="output-area">
+
+						<h2 class="display-6">Histórico</h2>
+						<table class="table table-sm table-striped">
+							<div class="table-responsive">
+
+								<thead>
+									<tr>
+										<th scope="col">Total Recebido</th>
+										<th scope="col">Total Pago</th>
+										<th scope="col">Saldo</th>
+									</tr>
+								</thead>
+
+								<tbody>
+									<tr>
+										<td id="total-recebido">R$ 0,00</td>
+										<td id="total-pago">R$ 0,00</td>
+										<td id="saldo-total">R$ 0,00</td>
+									</tr>
+									<tr>
+										<td colspan="3">
+
+											<table class="table table-sm table-striped table-hover" id="output-table">
+												<div class="table-responsive">
+
+													<thead>
+														<tr>
+															<th scope="col">Operação</th>
+															<th scope="col">Valor</th>
+															<th scope="col">Data</th>
+														</tr>
+													</thead>
+
+													<tbody id="output-content"></tbody>
+
+													<tfoot></tfoot>
+
+												</div>
+											</table>
+
+										</td>
+									</tr>
+								</tbody>
+
+								<!-- <tfoot></tfoot> -->
+
+							</div>
+						</table>
+
+					</div>
+				</div>
+
+			</main>
+
+			<hr>
+
+			<footer>
+
+				<div class="text-justify">
+					<p class="text-center h4">Método de Identificação</p>
+					<p>
+						Uma das grandes vantagens do Pix é a agilidade no pagamento. Em vez de pedir agência, conta e dados pessoais do recebedor, basta pedir a Chave Pix, que é a identificação de preferência.
+					</p>
+					<p>
+						Exemplo: o recebedor cadastrou previamente seu número de telefone celular para receber o crédito em determinada conta. Então, em vez de informar manualmente todos os dados, inclui apenas o número do telefone celular. Ao fazer um Pix, o sistema identifica as informações da conta do credor a partir dessa chave.
+					</p>
+					<p>
+						A Chave Pix previamente cadastrada pode ser CPF, CNPJ, e-mail, número de celular ou chave aleatória (uma sequência alfanumérica gerada aleatoriamente que poderá ser utilizada por usuários que não queiram vincular seus dados pessoais às informações de sua conta transacional). 
+					</p>
+				</div>
+
+			</footer>
+
+		</div>
+
+	</div>
+
+	<script type="text/javascript" src="./js/03-pix-carregar.js"></script>
+
+</body>
+</html>

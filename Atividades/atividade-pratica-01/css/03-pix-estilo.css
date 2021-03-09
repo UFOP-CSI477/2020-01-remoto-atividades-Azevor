@@ -1,0 +1,33 @@
+body {
+	padding-top: 2%;
+}
+
+h1 {
+	text-align: left;
+}
+
+main {
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+footer {
+	font-size: 12px;
+}
+
+.container {
+	background-color: #eeeeee;
+	box-shadow: 3px 6px 8px 3px rgba(100, 100, 100, 0.3);
+	border-radius: 5px;
+	margin: 0 auto;
+	width: 70%
+}
+
+#input-area{
+	padding-right: 20px;
+}
+
+#output-area {
+	padding-left: 20px;
+	border-left: 1px solid #c2c2c2;
+}
