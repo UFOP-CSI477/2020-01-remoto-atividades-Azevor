@@ -3,24 +3,25 @@
 * 
 */
 function carregarFormulario() {
-	const tipoOp = ['', 'Envio', 'Recebimento'];
-	const formulario = document.getElementById("form-input");
-	// const op = tipoOp.get(formulario.operacao[formulario.operacao.selectedIndex].value);
-	const op = tipoOp[formulario.operacao.selectedIndex];
+	var valorInput = parseFloat(document.getElementById("valor").value.replace(',', '.')).toFixed(2);
 
-	if (op == 'Envio') {
-		console.log('Envio success');
-	} else if (op == 'Recebimento') {
-		console.log('Recebimento success');
+	if (valorInput > 0.00) {
+		const formulario = document.getElementById("form-input");
+		const tipoOp = ['', 'Envio', 'Recebimento'];
+		const op = tipoOp[formulario.operacao.selectedIndex];
+
+		if (op == 'Envio') {
+			if (fazPagamento(valorInput)) {
+				console.log('Valor pago com sucesso');
+				inserirLinha([op, `R$ ${valorInput.replace('.', ',')}`, dataAtual()]);
+			} else {
+				console.log('Saldo insuficiente');
+			}
+		} else if (op == 'Recebimento') {
+			fazRecebimento(valorInput);
+			inserirLinha([op, `R$ ${valorInput.replace('.', ',')}`, dataAtual()]);
+		}
 	}
-	// const valor = formulario.valor.value;
-	
-	// const data = new Date();
-	// const dia = ('00' + data.getUTCDate()).slice(-2);
-	// const mes = ('00' + (data.getUTCMonth()+1)).slice(-2);
-	// const ano = data.getUTCFullYear();
-
-	// inserirLinha([op, valor, `${dia}/${mes}/${ano}`]);
 }
 
 /**
@@ -32,7 +33,7 @@ function inserirLinha(conteudo) {
 	var tbody = document.getElementById("output-content");
 	var linha = document.createElement('tr');
 
-	for (var i = 0; i<conteudo.length; i++) {
+	for (var i = 0; i < conteudo.length; i++) {
 		var coluna = document.createElement('td');
 		var texto = document.createTextNode(conteudo[i]);
 		coluna.appendChild(texto);
@@ -42,15 +43,31 @@ function inserirLinha(conteudo) {
 }
 
 /**
+ * Recuperar data atual formato utc dd/mm/aaaa.
+ * 
+ * @returns String
+ */
+function dataAtual() {
+	const data = new Date();
+	const dia = ('00' + data.getUTCDate()).slice(-2);
+	const mes = ('00' + (data.getUTCMonth() + 1)).slice(-2);
+	const ano = data.getUTCFullYear();
+	return `${dia}/${mes}/${ano}`;
+}
+
+/**
 * Atualiza saldo de valor recebido e saldo total.
 * 
+* @param float
 */
 function fazRecebimento(valorOperacao) {
 	var totalRecebido = document.getElementById("total-recebido");
 	var saldoTotal = document.getElementById("saldo-total");
+	var somaRecebido = parseFloat(totalRecebido.innerHTML.replace(',', '.')) * 1.0 + valorOperacao * 1.0;
+	var somaTotal = parseFloat(saldoTotal.innerHTML.replace(',', '.')) * 1.0 + valorOperacao * 1.0;
 
-	totalRecebido.innerHTML = parseFloat(totalRecebido.value) + parseFloat(valorOperacao);
-	saldoTotal.innerHTML = parseFloat(saldoTotal.value) + parseFloat(valorOperacao);
+	totalRecebido.innerHTML = somaRecebido.toFixed(2).toString().replace('.', ',');
+	saldoTotal.innerHTML = somaTotal.toFixed(2).toString().replace('.', ',');
 }
 
 /**
@@ -58,18 +75,20 @@ function fazRecebimento(valorOperacao) {
 * Caso haja saldo, a operação é realizada e o saldo atualizado.
 * Caso contrário, retorna falso e não faz nada.
 * 
+* @param Float
 * @return boolean
 */
 function fazPagamento(valorOperacao) {
 	var saldoTotal = document.getElementById("saldo-total");
-	const diferencaSaldo = parseFloat(saldoTotal.value) - parseFloat(valorOperacao);
+	var diferencaSaldo = (parseFloat(saldoTotal.innerHTML.replace(',', '.')) * 1.0 - valorOperacao * 1.0).toFixed(2);
 
-	if (diferencaSaldo > 0.00) {
-		var totalPago = document.getElementById("total-pago");
-		totalPago.innerHTML = parseFloat(totalPago.value) + parseFloat(valorOperacao);
-		saldoTotal.innerHTML = diferencaSaldo;
-		return true;
-	} else {
+	if (diferencaSaldo < 0.00) {
 		return false;
+	} else {
+		var totalPago = document.getElementById("total-pago");
+		var somaPagos = (parseFloat(totalPago.innerHTML.replace(',', '.')) * 1.0 + valorOperacao * 1.0).toFixed(2);
+		totalPago.innerHTML = somaPagos.toString().replace('.',',');
+		saldoTotal.innerHTML = diferencaSaldo.toString().replace('.', ',');
+		return true;
 	}
 }

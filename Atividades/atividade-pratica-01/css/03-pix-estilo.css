@@ -23,6 +23,21 @@ footer {
 	width: 70%
 }
 
+.input-group-text {
+	background-color: #ffffff;
+	color: #3d3d3d;
+	font-weight: 600;
+	border-right: none;
+}
+
+/* #valor {
+	border-left: none;
+} */
+
+#banco {
+	background-color: #ffffff;
+}
+
 #input-area{
 	padding-right: 20px;
 }
