@@ -4,7 +4,7 @@
 */
 function carregarFormulario() {
 	var valorInput = parseFloat(document.getElementById("valor").value.replace(',', '.')).toFixed(2);
-
+	
 	if (valorInput > 0.00) {
 		const formulario = document.getElementById("form-input");
 		const tipoOp = ['', 'Envio', 'Recebimento'];
@@ -12,13 +12,15 @@ function carregarFormulario() {
 
 		if (op == 'Envio') {
 			if (fazPagamento(valorInput)) {
-				console.log('Valor pago com sucesso');
 				inserirLinha([op, `R$ ${valorInput.replace('.', ',')}`, dataAtual()]);
+				resetarCampos();
+				removeClass('dv-mdal', 'd-none');
 			} else {
-				console.log('Saldo insuficiente');
+				exibirAlerta('Saldo insuficiente');
 			}
 		} else if (op == 'Recebimento') {
 			fazRecebimento(valorInput);
+			resetarCampos();
 			inserirLinha([op, `R$ ${valorInput.replace('.', ',')}`, dataAtual()]);
 		}
 	}
@@ -87,8 +89,20 @@ function fazPagamento(valorOperacao) {
 	} else {
 		var totalPago = document.getElementById("total-pago");
 		var somaPagos = (parseFloat(totalPago.innerHTML.replace(',', '.')) * 1.0 + valorOperacao * 1.0).toFixed(2);
-		totalPago.innerHTML = somaPagos.toString().replace('.',',');
+		totalPago.innerHTML = somaPagos.toString().replace('.', ',');
 		saldoTotal.innerHTML = diferencaSaldo.toString().replace('.', ',');
 		return true;
 	}
+}
+
+/**
+ * Limpar todos os campos do formulário.
+ */
+function resetarCampos() {
+	document.getElementById("tipo-operacao").selectedIndex = 0;
+	document.getElementById("cod-banco").value = '';
+	document.getElementById("banco").value = '';
+    document.getElementById("valor").value = '';
+    document.getElementById("tipo-chave").selectedIndex = 0;
+	document.getElementById("chave").value = '';
 }

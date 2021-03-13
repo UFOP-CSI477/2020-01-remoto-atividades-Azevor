@@ -13,6 +13,12 @@ function validarDados() {
         return;
     }
 
+    if (codBanco.value == '') {
+        exibirAlerta('Informar Cód. Banco!');
+        codBanco.focus();
+        return;
+    }
+
     if (!isNum(valorOp)) {
         exibirAlerta('Valor inválido!');
         return;
@@ -29,11 +35,7 @@ function validarDados() {
         return;
     }
 
-    if (codBanco.value == '') {
-        exibirAlerta('Informar Cód. Banco!');
-        codBanco.focus();
-        return;
-    }
+    carregarFormulario();
 }
 
 /**
