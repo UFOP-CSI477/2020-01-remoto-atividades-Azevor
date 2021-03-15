@@ -1,0 +1,68 @@
+.my-modal {
+    background-color: rgba(0, 0, 0, .7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.modal-content {
+    margin: 0 auto;
+    margin-top: 5%;
+    max-width: 500px;
+    background-color: #eee;
+    padding: 0px;
+    box-shadow: 0, 0, 2px #fff;
+}
+
+.modal-header, .modal-body, .modal-footer {
+    padding: 10px;
+}
+
+.modal-header {
+    background-color: #ccc;
+    font-weight: bold;
+}
+
+.modal-footer {
+    vertical-align: bottom;
+}
+
+#fechar-modal {
+    text-decoration: none;
+    color: #555555;
+    font-size: 20px;
+    position: relative;
+    top: -60px;
+    left: 220px;
+}
+
+#fechar-modal:hover {
+    color: #888888;
+    font-weight: bold;
+}
+
+#fechar-modal:active {
+    color: #fff;
+}
+
+input {
+    text-transform: uppercase;
+}
+
+input, button {
+    text-align: center;
+}
+
+p {
+    text-align: left;
+    font-size: 15px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: lighter;
+}
+
+.fecharRelatorio {
+    width: 100px;
+    height: 30px;
+}

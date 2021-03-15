@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="br" dir="ltr">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="./css/04-consumo-estilo.css" rel="stylesheet" type="text/css">
+    <link href="./css/04-consumo-modal.css" rel="stylesheet" type="text/css">
+
+    <title>Controle de Combustível</title>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header></header>
+
+        <main>
+            <div class="plano-fundo">
+                <h1 class="text-center">Controle de Combustível</h1>
+
+                <div class="row">
+                    <div class="btn btn-group centralizar">
+                        <button type="button" onclick="incluirRegistroConsumo()">Registrar Consumo</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="btn btn-group centralizar">
+                        <button type="button" onclick="tratarDadosTabela()">Visualizar Estatísticas</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="plano-fundo text-center">
+                <h2 class="display-6">Veículos Registrados</h2>
+
+                <div class="row" id="table-output">
+                    <div class="table-responsive">
+                        <table id="tabela-input" class="table table-sm table-striped table-light table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Placa</th>
+                                    <th scope="col">Gas (L)</th>
+                                    <th scope="col">km</th>
+                                    <th scope="col">km/l</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="content-input"></tbody>
+
+                            <tfoot></tfoot>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <footer>
+            <!-- Modal -->
+            <div id="my-modal" class="my-modal text-center d-none">
+                <div class="modal-content">
+
+                    <div>
+                        <div id="mheader" class="modal-header"></div>
+                        <label id="fechar-modal" onclick="fecharModal()">x</label>
+                    </div>
+
+                    <div id="mbody" class="modal-body"></div>
+
+                    <div id="mfooter" class="modal-footer"></div>
+
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script type="text/javascript" src="./js/04-consumo-modal.js"></script>
+    <script type="text/javascript" src="./js/04-consumo-validar.js"></script>
+    <script type="text/javascript" src="./js/04-consumo-estatisticas.js"></script>
+
+</body>
+
+</html>
