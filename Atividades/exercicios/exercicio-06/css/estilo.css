@@ -1,0 +1,12 @@
+body {
+    background-color: #9bbace;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.table-responsive {
+    margin: 0 auto;
+    width: 700px;
+}
