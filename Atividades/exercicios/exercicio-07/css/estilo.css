@@ -1,0 +1,32 @@
+h2, label {
+    color: #fff;
+    text-shadow: 2px 2px #000;
+    padding-top: 2%;
+}
+
+input {
+    text-transform: uppercase;
+}
+
+.table-responsive {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.plano-fundo {
+    background-color: rgba(45, 53, 70, 0.8);
+	box-shadow: 3px 6px 8px 3px rgba(75, 75, 75, 0.3);
+    border-radius: 10px;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 3%;
+}
+
+.conteudo {
+    padding: 20px;
+}
+
+.alerta-entrada:focus {
+    border-color: #FF0000;
+    box-shadow: inset 0 1px 1px rgba(230, 80, 80, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+  }
