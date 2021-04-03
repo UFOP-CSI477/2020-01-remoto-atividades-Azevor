@@ -25,9 +25,9 @@ Route::get('/produtos', function () {
 });
 
 Route::get('/produtos/{id}', function ($id) {
-    $produto = Product::find($id);
-    if ($produto == null) {
-        return view('produtos', ['output' => 'Produto não encontrado!']);
-    }
-    return view('produtos', ['output' => $produto]);
+    $produto = Product::findOrFail($id);
+    // if ($produto == null) {
+    //     return view('produtos', ['output' => 'Produto não encontrado!']);
+    // }
+    return view('produtos', ['output' => [$produto]]);
 });

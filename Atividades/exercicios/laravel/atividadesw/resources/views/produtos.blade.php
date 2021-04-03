@@ -40,7 +40,7 @@
             <main>
                 <div class="table table-responsive">
                     <table class="table table-hover table-striped table-light">
-                        <caption>Tabela de Produtos</caption>
+                        <!-- <caption>Tabela de Produtos</caption> -->
                         <head>
                             <tr class="table table-dark">
                                 <th scope="col">Descrição</th>
@@ -50,11 +50,11 @@
                         </head>
                         <tbody>
                             @foreach ($output as $dados)
-                            <tr>
-                                <td>{{ $dados->nome }}</td>
-                                <td>{{ $dados->quantidade }}</td>
-                                <td>{{ $dados->um }}</td>
-                            </tr>
+                                <tr>
+                                    <td>{{ $dados->nome }}</td>
+                                    <td>{{ $dados->quantidade }}</td>
+                                    <td>{{ $dados->um }}</td>
+                                </tr>
                             @endforeach
                         </tbody>
                         <tfoot></tfoot>
