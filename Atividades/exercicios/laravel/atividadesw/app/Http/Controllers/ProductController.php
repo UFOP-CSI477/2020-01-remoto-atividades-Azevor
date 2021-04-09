@@ -9,12 +9,12 @@ class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     * 
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $produtos = Product::orderBy('nome')->get();
+        $produtos = Product::orderBy($_GET['orderBy'])->get();
         return view('produtos.index', ['produtos'=>$produtos]);
     }
 
@@ -25,7 +25,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('produtos.cadastrar');
     }
 
     /**
@@ -36,7 +36,14 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->all()['nome'] == null || $request->all()['quantidade'] == null || $request->all()['um'] == null) {
+            session()->flash('mensagem', 'Tentativa de cadastrar falhou!');
+            return redirect()->route('produtos.create');
+        } else {
+            Product::create($request->all());
+            session()->flash('mensagem', 'Gravado com sucesso!');
+            return redirect()->route('produtos.index', 'orderBy=id');
+        }
     }
 
     /**
@@ -45,9 +52,9 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        //
+        return view('produtos.detalhes', ['produto'=>Product::FindOrFail($id)]);
     }
 
     /**
@@ -56,9 +63,9 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        //
+        return view('produtos.editar', ['produto'=>Product::FindOrFail($id)]);
     }
 
     /**
@@ -68,9 +75,13 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        //
+        $produto = Product::FindOrFail($id);
+        $produto->fill($request->all());
+        $produto->save();
+        session()->flash('mensagem', 'Dados atualizados com sucesso!');
+        return redirect()->route('produtos.show', $id);
     }
 
     /**
@@ -79,8 +90,11 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        //
+        $produto = Product::FindOrFail($id);
+        $produto->delete();
+        session()->flash('mensagem', 'Produto excluído!');
+        return redirect()->route('produtos.index', 'orderBy=id');
     }
 }

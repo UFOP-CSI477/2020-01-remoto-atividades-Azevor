@@ -20,7 +20,7 @@
                 <li class="nav-item"><a class="nav-link disabled" href="#">Pessoas</a></li>
                 <li class="nav-item"><a class="nav-link disabled" href="#">Estados</a></li>
                 <li class="nav-item"><a class="nav-link disabled" href="#">Cidades</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('produtos.index') }}">Produtos</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('produtos.index', 'orderBy=id') }}">Produtos</a></li>
                 <li class="nav-item"><a class="nav-link disabled" href="#">Perfil</a></li>
                 <li class="nav-item"><a class="nav-link disabled" href="#">Relatorio</a></li>
                 <li class="nav-item"><a class="nav-link disabled" href="#">Sair</a></li>
@@ -30,6 +30,14 @@
 
         <main>
             <div>
+                <div class="text-center">
+                    {{-- Mensagem de retorno --}}
+                    @if (session('mensagem'))
+                        <div class="alert alert-success text-center">
+                            {{ session('mensagem') }}
+                        </div>
+                    @endif
+                </div>
                 <!-- CONTEÚDO DA TABELA -->
                 @yield('conteudo')
             </div>
