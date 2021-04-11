@@ -1,9 +1,7 @@
 @extends('home')
 @section('conteudo')
     <div>
-        <div class="btn">
-            <a href="{{ route('produtos.create') }}" class="btn btn-success">Inserir Produto</a>
-        </div>
+        <a href="{{ route('produtos.create') }}" class="btn btn-outline-dark btn-sm d-grid gap-2">Cadastrar Produto</a>
     </div>
     <div class="table-responsive">
         <table class="table table-bordered table-hover table-striped">
@@ -20,14 +18,15 @@
                 </tr>
             </thead>
 
-            <tbody class="table-light">
+            <tbody>
                 @foreach ($produtos as $produto)
                     <tr>
                         <td class="text-center">{{ $produto->id }}</td>
                         <td>{{ $produto->nome }}</td>
                         <td class="text-center">{{ $produto->quantidade }}</td>
                         <td class="text-center">{{ $produto->um }}</td>
-                        <td class="text-center"><a href="{{ route('produtos.show', $produto->id) }}">Exibir</a></td>
+                        <td class="text-center"><a href="{{ route('produtos.show', $produto->id) }}"
+                                style="text-decoration: none;" class="btn btn-link">🔍 Exibir</a></td>
                     </tr>
                 @endforeach
             </tbody>

@@ -14,27 +14,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 use App\Models\Product;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\EstadoController;
+use App\Http\Controllers\CidadeController;
+use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\PessoaController;
+use App\Http\Controllers\CompraController;
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
 Route::get('/', function () {
-    return view('home');
+    return view('principal');
 })->name('home');
 
-Route::resource('/produtos', ProductController::class);
-
-// Route::get('/produtos', function () {
-//     $produtos = Product::all();
-//     return view('produtos', ['output' => $produtos]);
-// });
-
-// Route::get('/produtos/{id}', function ($id) {
-//     $produto = Product::findOrFail($id);
-//     // if ($produto == null) {
-//     //     return view('produtos', ['output' => 'Produto não encontrado!']);
-//     // }
-//     return view('produtos', ['output' => [$produto]]);
-// });
+Route::resource('/estados', EstadoController::class);
+Route::resource('/cidades', CidadeController::class);
+Route::resource('/produtos', ProdutoController::class);
+Route::resource('/pessoas', PessoaController::class);
+Route::resource('/compras', CompraController::class);

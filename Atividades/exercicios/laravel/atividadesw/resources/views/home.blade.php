@@ -12,39 +12,48 @@
 
 <body>
     <div class="container">
-
-        <header>
-            <h1>Universo</h1>
+        <header class="jumbotron">
+            <h1>GTsys</h1>
             <ul class="nav">
-                <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
-                <li class="nav-item"><a class="nav-link disabled" href="#">Pessoas</a></li>
-                <li class="nav-item"><a class="nav-link disabled" href="#">Estados</a></li>
-                <li class="nav-item"><a class="nav-link disabled" href="#">Cidades</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('produtos.index', 'orderBy=id') }}">Produtos</a></li>
-                <li class="nav-item"><a class="nav-link disabled" href="#">Perfil</a></li>
-                <li class="nav-item"><a class="nav-link disabled" href="#">Relatorio</a></li>
-                <li class="nav-item"><a class="nav-link disabled" href="#">Sair</a></li>
+                <li class="nav-item btn"><a onclick="fillBtn(this)" class="nav-link btn btn-outline-success"
+                        href="{{ route('home') }}">Home</a></li>
+                <li class="nav-item btn"><a onclick="fillBtn(this)" class="nav-link btn btn-outline-success"
+                        href="{{ route('pessoas.index') }}">Pessoas</a></li>
+                <li class="nav-item btn"><a onclick="fillBtn(this)" class="nav-link btn btn-outline-success"
+                        href="{{ route('estados.index') }}">Estados</a></li>
+                <li class="nav-item btn"><a onclick="fillBtn(this)" class="nav-link btn btn-outline-success"
+                        href="{{ route('cidades.index') }}">Cidades</a></li>
+                <li class="nav-item btn"><a onclick="fillBtn(this)" class="nav-link btn btn-outline-success"
+                        href="{{ route('produtos.index', 'orderBy=id') }}">Produtos</a></li>
+                <li class="nav-item btn"><a onclick="fillBtn(this)" class="nav-link btn btn-outline-success"
+                        href="#">Perfil</a></li>
+                <li class="nav-item btn"><a onclick="fillBtn(this)" class="nav-link btn btn-outline-success"
+                        href="{{ route('compras.index', 'orderBy=data_compra') }}">Relatorio</a></li>
+                <li class="nav-item btn"><a onclick="fillBtn(this)" class="nav-link btn btn-outline-success"
+                        href="#">Sair</a></li>
             </ul>
             <hr>
         </header>
-
         <main>
             <div>
                 <div class="text-center">
-                    {{-- Mensagem de retorno --}}
-                    @if (session('mensagem'))
+                    {{-- MENSAGENS DE AVISO/ALERTA --}}
+                    @if (session('msg-success'))
                         <div class="alert alert-success text-center">
-                            {{ session('mensagem') }}
+                            {{ session('msg-success') }}
+                        </div>
+                    @endif
+                    @if (session('msg-danger'))
+                        <div class="alert alert-danger text-center">
+                            {{ session('msg-danger') }}
                         </div>
                     @endif
                 </div>
-                <!-- CONTEÚDO DA TABELA -->
+                <!-- CONTEÚDO DO CORPO DA PÁGINA -->
                 @yield('conteudo')
             </div>
         </main>
-
         <footer></footer>
-
     </div>
 </body>
 
