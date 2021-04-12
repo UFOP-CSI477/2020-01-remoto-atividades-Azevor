@@ -1,4 +1,4 @@
-@extends('home')
+@extends('principal')
 @section('conteudo')
     <div>
         <a href="{{ route('pessoas.create') }}" class="btn btn-outline-dark btn-sm d-grid gap-2">Cadastrar Pessoa</a>

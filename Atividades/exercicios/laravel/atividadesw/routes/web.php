@@ -19,17 +19,19 @@ use App\Http\Controllers\CidadeController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\PessoaController;
 use App\Http\Controllers\CompraController;
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+use App\Http\Controllers\HomeController;
 
 Route::get('/', function () {
-    return view('principal');
-})->name('home');
+    return view('initialPage');
+})->name('index');
 
 Route::resource('/estados', EstadoController::class);
 Route::resource('/cidades', CidadeController::class);
 Route::resource('/produtos', ProdutoController::class);
 Route::resource('/pessoas', PessoaController::class);
 Route::resource('/compras', CompraController::class);
+
+Auth::routes();
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Auth::routes();
+Route::get('/home', [HomeController::class, 'index'])->name('home');
