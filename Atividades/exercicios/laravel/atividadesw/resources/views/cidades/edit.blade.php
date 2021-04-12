@@ -1,8 +1,9 @@
 @extends('principal')
+@section('title', 'Cidades - editar cidade')
 @section('conteudo')
     <div>
         <div class="text-center">
-            <h2 class="display-6">Editar Dados da Cidade</h2>
+            <h2 class="display-6">Editar Dados</h2>
         </div>
         <div>
             <form action="{{ route('cidades.update', $cidade->id) }}" method="post">

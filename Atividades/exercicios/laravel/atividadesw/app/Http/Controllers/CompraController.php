@@ -6,6 +6,7 @@ use App\Models\Compra;
 use App\Models\Pessoa;
 use App\Models\Produto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CompraController extends Controller
 {
@@ -40,15 +41,19 @@ class CompraController extends Controller
      */
     public function store(Request $request)
     {
-        // Compra::create($request->all());
-        $compra = new Compra;
-        $compra->pessoa_id = $request->pessoa_id;
-        $compra->produto_id = $request->produto_id;
-        $compra->data_compra = date('Y-m-d H:i:s');
-        $compra->save();
-
-        session()->flash('msg-success', 'Compra cadastrada com sucesso!');
-        return redirect()->route('compras.index', 'orderBy=data_compra');
+        if (Auth::check()) {
+            // Compra::create($request->all());
+            $compra = new Compra;
+            $compra->pessoa_id = $request->pessoa_id;
+            $compra->produto_id = $request->produto_id;
+            $compra->data_compra = date('Y-m-d H:i:s');
+            $compra->save();
+            session()->flash('msg-success', 'Compra cadastrada com sucesso!');
+            return redirect()->route('compras.index', 'orderBy=data_compra');
+        } else {
+            session()->flash('msg-danger', 'Requer autenticação!');
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -84,11 +89,16 @@ class CompraController extends Controller
      */
     public function update(Request $request, Compra $compra)
     {
-        $compra->pessoa_id = $request->pessoa_id;
-        $compra->produto_id = $request->produto_id;
-        $compra->save();
-        session()->flash('msg-success', 'Dados atualizados com sucesso!');
-        return redirect()->route('compras.index', 'orderBy=data_compra');
+        if (Auth::check()) {
+            $compra->pessoa_id = $request->pessoa_id;
+            $compra->produto_id = $request->produto_id;
+            $compra->save();
+            session()->flash('msg-success', 'Dados atualizados com sucesso!');
+            return redirect()->route('compras.index', 'orderBy=data_compra');
+        } else {
+            session()->flash('msg-danger', 'Requer autenticação!');
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -99,8 +109,13 @@ class CompraController extends Controller
      */
     public function destroy(Compra $compra)
     {
-        $compra->delete();
-        session()->flash('msg-success', 'Dados da compra excluídos com sucesso!');
-        return redirect()->route('compras.index', 'orderBy=data_compra');
+        if (Auth::check()) {
+            $compra->delete();
+            session()->flash('msg-success', 'Dados da compra excluídos com sucesso!');
+            return redirect()->route('compras.index', 'orderBy=data_compra');
+        } else {
+            session()->flash('msg-danger', 'Requer autenticação!');
+            return redirect()->route('login');
+        }
     }
 }

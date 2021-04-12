@@ -1,4 +1,5 @@
 @extends('principal')
+@section('title', 'Produtos')
 @section('conteudo')
     <div>
         <a href="{{ route('produtos.create') }}" class="btn btn-outline-dark btn-sm d-grid gap-2">Cadastrar Produto</a>

@@ -1,4 +1,5 @@
 @extends('principal')
+@section('title', 'Estados - editar estado')
 @section('conteudo')
     <div>
         <div class="text-center">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pessoa;
 use App\Models\Cidade;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PessoaController extends Controller
 {
@@ -38,9 +39,14 @@ class PessoaController extends Controller
      */
     public function store(Request $request)
     {
-        Pessoa::create($request->all());
-        session()->flash('msg-success', 'Gravado com sucesso!');
-        return redirect()->route('pessoas.index');
+        if (Auth::check()) {
+            Pessoa::create($request->all());
+            session()->flash('msg-success', 'Gravado com sucesso!');
+            return redirect()->route('pessoas.index');
+        } else {
+            session()->flash('msg-danger', 'Requer autenticação!');
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -75,10 +81,15 @@ class PessoaController extends Controller
      */
     public function update(Request $request, Pessoa $pessoa)
     {
-        $pessoa->fill($request->all());
-        $pessoa->save();
-        session()->flash('msg-success', 'Dados atualizados com sucesso!');
-        return redirect()->route('pessoas.index');
+        if (Auth::check()) {
+            $pessoa->fill($request->all());
+            $pessoa->save();
+            session()->flash('msg-success', 'Dados atualizados com sucesso!');
+            return redirect()->route('pessoas.index');
+        } else {
+            session()->flash('msg-danger', 'Requer autenticação!');
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -89,12 +100,17 @@ class PessoaController extends Controller
      */
     public function destroy(Pessoa $pessoa)
     {
-        if ($pessoa->compras->count() > 0) {
-            session()->flash('msg-danger', 'Exclusão não permitida! Existem compras cadastradas.');
+        if (Auth::check()) {
+            if ($pessoa->compras->count() > 0) {
+                session()->flash('msg-danger', 'Exclusão não permitida! Existem compras cadastradas.');
+            } else {
+                $pessoa->delete();
+                session()->flash('msg-success', 'Dados excluídos!');
+            }
+            return redirect()->route('pessoas.index');
         } else {
-            $pessoa->delete();
-            session()->flash('msg-success', 'Dados excluídos!');
+            session()->flash('msg-danger', 'Requer autenticação!');
+            return redirect()->route('login');
         }
-        return redirect()->route('pessoas.index');
     }
 }

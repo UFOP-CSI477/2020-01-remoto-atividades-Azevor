@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Estado;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EstadoController extends Controller
 {
@@ -25,7 +26,12 @@ class EstadoController extends Controller
      */
     public function create()
     {
-        return view('estados.create');
+        if (Auth::check()) {
+            return view('estados.create');
+        } else {
+            session()->flash('msg-danger', 'Requer autenticação!');
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -36,9 +42,14 @@ class EstadoController extends Controller
      */
     public function store(Request $request)
     {
-        Estado::create($request->all());
-        session()->flash('msg-success', 'Gravado com sucesso!');
-        return redirect()->route('estados.index');
+        if (Auth::check()) {
+            Estado::create($request->all());
+            session()->flash('msg-success', 'Gravado com sucesso!');
+            return redirect()->route('estados.index');
+        } else {
+            session()->flash('msg-danger', 'Requer autenticação!');
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -60,7 +71,12 @@ class EstadoController extends Controller
      */
     public function edit(Estado $estado)
     {
-        return view('estados.edit', ['estado'=>$estado]);
+        if (Auth::check()) {
+            return view('estados.edit', ['estado'=>$estado]);
+        } else {
+            session()->flash('msg-danger', 'Requer autenticação!');
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -72,10 +88,15 @@ class EstadoController extends Controller
      */
     public function update(Request $request, Estado $estado)
     {
-        $estado->fill($request->all());
-        $estado->save();
-        session()->flash('msg-success', 'Dados atualizados com sucesso!');
-        return redirect()->route('estados.index');
+        if (Auth::check()) {
+            $estado->fill($request->all());
+            $estado->save();
+            session()->flash('msg-success', 'Dados atualizados com sucesso!');
+            return redirect()->route('estados.index');
+        } else {
+            session()->flash('msg-danger', 'Requer autenticação!');
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -86,12 +107,17 @@ class EstadoController extends Controller
      */
     public function destroy(Estado $estado)
     {
-        if ($estado->cidades->count() > 0) {
-            session()->flash('msg-danger', 'Exclusão não permitida! Existem cidades cadastradas.');
+        if (Auth::check()) {
+            if ($estado->cidades->count() > 0) {
+                session()->flash('msg-danger', 'Exclusão não permitida! Existem cidades cadastradas.');
+            } else {
+                $estado->delete();
+                session()->flash('msg-success', 'Estado excluído!');
+            }
+            return redirect()->route('estados.index');
         } else {
-            $estado->delete();
-            session()->flash('msg-success', 'Estado excluído!');
+            session()->flash('msg-danger', 'Requer autenticação!');
+            return redirect()->route('login');
         }
-        return redirect()->route('estados.index');
     }
 }

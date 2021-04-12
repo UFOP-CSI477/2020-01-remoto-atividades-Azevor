@@ -28,8 +28,8 @@ Route::get('/', function () {
 Route::resource('/estados', EstadoController::class);
 Route::resource('/cidades', CidadeController::class);
 Route::resource('/produtos', ProdutoController::class);
-Route::resource('/pessoas', PessoaController::class);
-Route::resource('/compras', CompraController::class);
+Route::resource('/pessoas', PessoaController::class)->middleware('auth');
+Route::resource('/compras', CompraController::class)->middleware('auth');
 
 Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Produto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProdutoController extends Controller
 {
@@ -25,7 +26,12 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        return view('produtos.create');
+        if (Auth::check()) {
+            return view('produtos.create');
+        } else {
+            session()->flash('msg-danger', 'Requer autenticação!');
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -36,9 +42,14 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        Produto::create($request->all());
-        session()->flash('msg-success', 'Gravado com sucesso!');
-        return redirect()->route('produtos.index', 'orderBy=nome');
+        if (Auth::check()) {
+            Produto::create($request->all());
+            session()->flash('msg-success', 'Gravado com sucesso!');
+            return redirect()->route('produtos.index', 'orderBy=nome');
+        } else {
+            session()->flash('msg-danger', 'Requer autenticação!');
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -60,7 +71,12 @@ class ProdutoController extends Controller
      */
     public function edit(Produto $produto)
     {
-        return view('produtos.edit', ['produto'=>$produto]);
+        if (Auth::check()) {
+            return view('produtos.edit', ['produto'=>$produto]);
+        } else {
+            session()->flash('msg-danger', 'Requer autenticação!');
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -72,10 +88,15 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, Produto $produto)
     {
-        $produto->fill($request->all());
-        $produto->save();
-        session()->flash('msg-success', 'Dados atualizados com sucesso!');
-        return redirect()->route('produtos.index', 'orderBy=nome');
+        if (Auth::check()) {
+            $produto->fill($request->all());
+            $produto->save();
+            session()->flash('msg-success', 'Dados atualizados com sucesso!');
+            return redirect()->route('produtos.index', 'orderBy=nome');
+        } else {
+            session()->flash('msg-danger', 'Requer autenticação!');
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -86,12 +107,17 @@ class ProdutoController extends Controller
      */
     public function destroy(Produto $produto)
     {
-        if ($produto->compras->count() > 0) {
-            session()->flash('msg-danger', 'Exclusão não permitida! Existem compras cadastradas.');
+        if (Auth::check()) {
+            if ($produto->compras->count() > 0) {
+                session()->flash('msg-danger', 'Exclusão não permitida! Existem compras cadastradas.');
+            } else {
+                $produto->delete();
+                session()->flash('msg-success', 'Produto excluído!');
+            }
+            return redirect()->route('produtos.index', 'orderBy=nome');
         } else {
-            $produto->delete();
-            session()->flash('msg-success', 'Produto excluído!');
+            session()->flash('msg-danger', 'Requer autenticação!');
+            return redirect()->route('login');
         }
-        return redirect()->route('produtos.index', 'orderBy=nome');
     }
 }

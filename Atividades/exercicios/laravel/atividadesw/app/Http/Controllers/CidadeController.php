@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cidade;
 use App\Models\Estado;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CidadeController extends Controller
 {
@@ -26,8 +27,13 @@ class CidadeController extends Controller
      */
     public function create()
     {
-        $estados = Estado::orderBy('nome')->get();
-        return view('cidades.create', ['estados'=>$estados]);
+        if (Auth::check()) {
+            $estados = Estado::orderBy('nome')->get();
+            return view('cidades.create', ['estados'=>$estados]);
+        } else {
+            session()->flash('msg-danger', 'Requer autenticação!');
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -38,9 +44,14 @@ class CidadeController extends Controller
      */
     public function store(Request $request)
     {
-        Cidade::create($request->all());
-        session()->flash('msg-success', 'Cidade gravada com sucesso!');
-        return redirect()->route('cidades.index');
+        if (Auth::check()) {
+            Cidade::create($request->all());
+            session()->flash('msg-success', 'Cidade gravada com sucesso!');
+            return redirect()->route('cidades.index');
+        } else {
+            session()->flash('msg-danger', 'Requer autenticação!');
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -62,8 +73,13 @@ class CidadeController extends Controller
      */
     public function edit(Cidade $cidade)
     {
-        $estados = Estado::orderBy('nome')->get();
-        return view('cidades.edit', ['cidade'=>$cidade, 'estados'=>$estados]);
+        if (Auth::check()) {
+            $estados = Estado::orderBy('nome')->get();
+            return view('cidades.edit', ['cidade'=>$cidade, 'estados'=>$estados]);
+        }  else {
+            session()->flash('msg-danger', 'Requer autenticação!');
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -75,10 +91,15 @@ class CidadeController extends Controller
      */
     public function update(Request $request, Cidade $cidade)
     {
-        $cidade->fill($request->all());
-        $cidade->save();
-        session()->flash('msg-success', 'Dados atualizados com sucesso!');
-        return redirect()->route('cidades.index');
+        if (Auth::check()) {
+            $cidade->fill($request->all());
+            $cidade->save();
+            session()->flash('msg-success', 'Dados atualizados com sucesso!');
+            return redirect()->route('cidades.index');
+        } else {
+            session()->flash('msg-danger', 'Requer autenticação!');
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -89,12 +110,17 @@ class CidadeController extends Controller
      */
     public function destroy(Cidade $cidade)
     {
-        if ($cidade->pessoas->count() > 0) {
-            session()->flash('msg-danger', 'Exclusão não permitida! Existem pessoas cadastradas.');
+        if (Auth::check()) {
+            if ($cidade->pessoas->count() > 0) {
+                session()->flash('msg-danger', 'Exclusão não permitida! Existem pessoas cadastradas.');
+            } else {
+                $cidade->delete();
+                session()->flash('msg-success', 'Cidade excluída!');
+            }
+            return redirect()->route('cidades.index');
         } else {
-            $cidade->delete();
-            session()->flash('msg-success', 'Cidade excluída!');
+            session()->flash('msg-danger', 'Requer autenticação!');
+            return redirect()->route('login');
         }
-        return redirect()->route('cidades.index');
     }
 }

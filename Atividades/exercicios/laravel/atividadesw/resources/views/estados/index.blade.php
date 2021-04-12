@@ -1,4 +1,5 @@
 @extends('principal')
+@section('title', 'Estados')
 @section('conteudo')
     <div>
         <a href="{{ route('estados.create') }}" class="btn btn-outline-dark btn-sm d-grid gap-2">Cadastrar Estado</a>

@@ -1,4 +1,5 @@
 @extends('principal')
+@section('title', 'Cidades - cadastrar cidade')
 @section('conteudo')
     <div>
         <div class="text-center">

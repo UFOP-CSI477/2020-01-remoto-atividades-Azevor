@@ -1,4 +1,5 @@
 @extends('principal')
+@section('title', 'Pessoas - novo cadastro')
 @section('conteudo')
     <div>
         <div class="text-center">
