@@ -1,5 +1,5 @@
 # **CSI477-2020-01 - Remoto - Trabalho Final - Resultados**
-## *Aluna(o): Princesa Leia (Luke Skywalker)*
+## *Aluno: Gildo Tiago Azevedo*
 
 --------------
 
@@ -7,7 +7,8 @@
 
 ### Resumo
 
-  (Apresentar um breve resumo sobre o seu trabalho, indicando o contexto e as principais funcionalidades.)
+  O projeto consiste no controle pessoal de finanças para registro de entrada (receitas) e saída (despesas), e visualização de balanço financeiro, dentre outras informações desejáveis, distribuídos mensalmente.
+  Para a implementação será utilizado o framework laravel, recursos de desenvolvimento web (html, css, js, etc) e banco de dados mysql para armazenamento dos registros diversos.
 
 ### 1. Funcionalidades implementadas
 <!-- Descrever as funcionalidades que eram previstas e foram implementas. -->
