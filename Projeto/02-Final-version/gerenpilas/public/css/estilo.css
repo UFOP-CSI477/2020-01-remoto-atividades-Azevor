@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arimo&display=swap');
+
+body {
+    background-color: #6C757D;
+}
+
+h1, h2 {
+    font-family: 'Arimo', sans-serif;
+}
+
+th {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+}
+
+.font-title {
+    font-family: 'Paytone One', sans-serif;
+    font-size: 1.5em;
+    
+}
+
+.data-head {
+    font-weight: bold;
+}
+
+.div-head {
+    color: #6C757D;
+}
+
+.card-principal {
+    background-color: #eeeeee;
+	box-shadow: 3px 6px 8px 3px rgba(100, 100, 100, 0.3);
+	border-radius: 5px;
+	margin: 0 auto;
+}
+
+.conteudo-principal {
+    padding: 20px;
+}
+
+.principal {
+    margin-top: 2%;
+}
+
+.saldo {
+    border: 1px solid #6C757D;
+    border-radius: 5px;
+    width: 350px;
+    margin-top: 10%;
+    padding: 5%;
+    background-color: #FFF;
+}
+
+.saldo-titulo {
+    border-bottom: 1px solid #6C757D;
+    font-weight: bold;
+}
+
+#tabela-categorias {
+    width: 70%;
+    margin: 0 auto;
+}

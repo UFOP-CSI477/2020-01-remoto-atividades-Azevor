@@ -14,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categorias = Category::orderBy('nome');
+        return view('categories.index', ['categorias'=>$categorias]);
     }
 
     /**

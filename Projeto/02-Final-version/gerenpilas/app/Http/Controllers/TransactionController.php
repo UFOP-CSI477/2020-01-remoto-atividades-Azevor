@@ -14,7 +14,9 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+        $transactions = Transaction::orderBy('id')->get();
+        $meses = array(1=>'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', ' julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro');
+        return view('principal', ['transactions'=>$transactions], ['meses'=>$meses]);
     }
 
     /**
