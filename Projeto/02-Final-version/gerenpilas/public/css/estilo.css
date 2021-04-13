@@ -33,6 +33,7 @@ th {
 	box-shadow: 3px 6px 8px 3px rgba(100, 100, 100, 0.3);
 	border-radius: 5px;
 	margin: 0 auto;
+    width: 80%;
 }
 
 .conteudo-principal {
@@ -55,6 +56,14 @@ th {
 .saldo-titulo {
     border-bottom: 1px solid #6C757D;
     font-weight: bold;
+}
+
+.texto-saldo {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.texto-saldo-positivo {
+    color: #ff0000;
 }
 
 #tabela-categorias {

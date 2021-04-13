@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class TransactionController extends Controller
 {
@@ -14,9 +15,8 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $transactions = Transaction::orderBy('id')->get();
-        $meses = array(1=>'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', ' julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro');
-        return view('principal', ['transactions'=>$transactions], ['meses'=>$meses]);
+        $transactions = Transaction::orderBy('data')->get();
+        return view('principal', ['transactions'=>$transactions]);
     }
 
     /**
@@ -26,7 +26,8 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+        $categorias = Category::orderBy('nome')->get();
+        return view('transactions.create', ['categorias'=>$categorias]);
     }
 
     /**
@@ -37,7 +38,16 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $transaction = new Transaction;
+        $transaction->user_id = $request->user_id;
+        $transaction->category_id = $request->category_id;
+        $transaction->data = $request->data;
+        $transaction->descricao = $request->descricao;
+        $transaction->valor = $request->valor;
+        $transaction->tipo = intval($request->tipo);
+        $transaction->save();
+        session()->flash('msg-success', 'Transação gravada com sucesso!');
+        return redirect()->route('index');
     }
 
     /**
@@ -59,7 +69,8 @@ class TransactionController extends Controller
      */
     public function edit(Transaction $transaction)
     {
-        //
+        $categorias = Category::orderBy('nome')->get();
+        return view('transactions.edit', ['transaction'=>$transaction, 'categorias'=>$categorias]);
     }
 
     /**
@@ -71,7 +82,14 @@ class TransactionController extends Controller
      */
     public function update(Request $request, Transaction $transaction)
     {
-        //
+        $transaction->category_id = $request->category_id;
+        $transaction->data = $request->data;
+        $transaction->descricao = $request->descricao;
+        $transaction->valor = $request->valor;
+        $transaction->tipo = intval($request->tipo);
+        $transaction->save();
+        session()->flash('msg-success', 'Suas alterações foram gravadas com sucesso!');
+        return redirect()->route('index');
     }
 
     /**
@@ -82,6 +100,8 @@ class TransactionController extends Controller
      */
     public function destroy(Transaction $transaction)
     {
-        //
+        $transaction->delete();
+        session()->flash('msg-success', 'Transação excluída!');
+        return redirect()->route('index');
     }
 }

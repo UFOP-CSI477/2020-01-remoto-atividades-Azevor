@@ -1,6 +1,10 @@
 @extends('molde')
 @section('title', 'Gerenpilas')
 @section('conteudo')
+
+    <?php $meses = [1 => 'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', ' julho', 'agosto',
+    'setembro', 'outubro', 'novembro', 'dezembro']; ?>
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col">
@@ -16,7 +20,7 @@
                         <div class="justify-content">
                             {{-- ABRIR MODAL --}}
                             <a href="{{ route('categories.index') }}" class="btn btn-success">Categoria</a>
-                            <a href="#" class="btn btn-success">Transação</a>
+                            <a href="{{ route('transactions.create') }}" class="btn btn-success">Transação</a>
                         </div>
                         <div class="row">
                             <div class="col-auto d-flex mt-2">
@@ -44,24 +48,59 @@
                         <div class="row justify-content-center">
                             <div class="col-auto">
                                 <div class="saldo">
-                                    <p class="saldo-titulo text-center">Saldo Mensal</p>
-                                    <p class="texto-saldo texto-receita">Receita: <span class="valor-saldo texto-receita">R$ 0,00</span></p>
-                                    <p class="texto-saldo texto-despesa">Despesa: <span class="valor-saldo texto-despesa">R$ 0,00</span></p>
-                                    <p class="texto-saldo texto-total">Total: <span class="valor-saldo texto-total">R$ 0,00</span></p>
+                                    <p class="saldo-titulo text-center texto-saldo">Saldo Mensal</p>
+                                    <p class="texto-saldo texto-receita">Receita: <span class="valor-saldo texto-receita">R$
+                                            0,00</span></p>
+                                    <p class="texto-saldo texto-despesa">Despesa: <span class="valor-saldo texto-despesa">R$
+                                            0,00</span></p>
+                                    <p class="texto-saldo texto-total">Total: <span class="valor-saldo texto-total">R$
+                                            0,00</span></p>
                                 </div>
                             </div>
                             <div class="col-auto">
                                 <div class="saldo">
-                                    <p class="saldo-titulo text-center">Saldo Geral</p>
-                                    <p class="texto-saldo texto-receita">Receita: <span class="valor-saldo texto-receita">R$ 0,00</span></p>
-                                    <p class="texto-saldo texto-despesa">Despesa: <span class="valor-saldo texto-despesa">R$ 0,00</span></p>
-                                    <p class="texto-saldo texto-total">Total: <span class="valor-saldo texto-total">R$ 0,00</span></p>
+                                    <p class="saldo-titulo text-center texto-saldo">Saldo Geral</p>
+                                    <p class="texto-saldo texto-receita">Receita: <span class="valor-saldo texto-receita">R$
+                                            0,00</span></p>
+                                    <p class="texto-saldo texto-despesa">Despesa: <span class="valor-saldo texto-despesa">R$
+                                            0,00</span></p>
+                                    <p class="texto-saldo texto-total">Total: <span class="valor-saldo texto-total">R$
+                                            0,00</span></p>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row mt-5">
                             <div class="col table-responsive">
                                 {{-- TABELA DE TRANSAÇÕES --}}
+                                <table class="table table-sm table-striped table-hover align-middle">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Data</th>
+                                            <th scope="col">Transação Efetuada</th>
+                                            <th scope="col">Categoria</th>
+                                            <th scope="col">Valor</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($transactions as $t)
+                                            <tr>
+                                                <td>{{ date_format(date_create_from_format('Y-m-d', $t->data), 'd/m/Y') }}
+                                                </td>
+                                                <td><a href="{{ route('transactions.edit', $t->id) }}"
+                                                        class="nav-link text-primary">{{ $t->descricao }}</a></td>
+                                                <td><a href="{{ route('categories.edit', $t->category->id) }}"
+                                                        class="nav-link text-primary">{{ $t->category->nome }}</a></td>
+                                                <td>{{ $t->valor }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="3">Total do mês</td>
+                                            <td>R$ 0,00</td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
                             </div>
                         </div>
                     </div>

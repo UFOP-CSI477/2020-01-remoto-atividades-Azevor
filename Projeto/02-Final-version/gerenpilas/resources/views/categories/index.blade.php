@@ -12,7 +12,8 @@
                         </div>
                         <div class="table-responsive mt-5" id="tabela-categorias">
                             <div class="text-end">
-                                <a href="#" class="btn btn-secondary">Adicionar Categoria</a>
+                                <a href="{{ route('categories.create') }}" class="btn btn-secondary">Adicionar
+                                    Categoria</a>
                                 <a href="{{ route('index') }}" class="btn btn-secondary">Voltar</a>
                             </div>
                             <table class="table table-bordered table-hover table-striped table-sm mt-1">
@@ -28,8 +29,24 @@
                                         <tr>
                                             <td class="text-center">{{ $categoria->nome }}</td>
                                             <td class="text-center">
-                                                <a href="#" style="text-decoration: none;" class="btn btn-link">🔍</a>
-                                                <a href="#" style="text-decoration: none;" class="btn btn-link">🔍</a>
+                                                {{-- <a href="{{ route('categories.edit', $categoria->id) }}"
+                                                    style="text-decoration: none;" class="btn btn-link">
+                                                    <span style="color: #007BFF">✎</span></a> --}}
+
+
+                                                <form name="frmDelete"
+                                                    action="{{ route('categories.destroy', $categoria->id) }}"
+                                                    method="post" onsubmit="return confirm('Deseja excluir categoria?')">
+                                                    
+                                                    <a href="{{ route('categories.edit', $categoria->id) }}"
+                                                        style="text-decoration: none;" class="btn btn-link">
+                                                        <span style="color: #007BFF">✎</span></a>
+
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <input type="submit" class="btn btn-link" value="❌"
+                                                        style="text-decoration: none; color: #ff0000;">
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
