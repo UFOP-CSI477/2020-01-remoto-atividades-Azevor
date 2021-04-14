@@ -16,7 +16,6 @@
                                 <div class="row mx-5">
                                     <div class="col mx-5">
                                         <div class="form-group mx-5">
-                                            <input type="hidden" name="user_id" id="user_id" value="{{ Auth::user()->id }}">
                                             <label for="descricao" class="form-label">Descrição</label>
                                             <input type="text" class="form-control" name="descricao" id="descricao">
                                         </div>
@@ -27,7 +26,8 @@
                                         </div>
                                         <div class="form-group mx-5">
                                             <label for="valor" class="form-label">Valor</label>
-                                            <input type="text" class="form-control" name="valor" id="valor">
+                                            <input type="text" class="form-control" name="valor" id="valor" 
+                                                    onkeypress="mascaraInput(this)">
                                         </div>
                                         <div class="form-group mx-5">
                                             <label for="category_id" class="form-label">Categoria</label>

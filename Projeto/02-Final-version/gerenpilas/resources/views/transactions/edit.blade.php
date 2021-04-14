@@ -29,7 +29,7 @@
                                         <div class="form-group mx-5">
                                             <label for="valor" class="form-label">Valor</label>
                                             <input type="text" class="form-control" name="valor" id="valor"
-                                                value="{{ $transaction->valor }}">
+                                                value="{{ str_replace('.', ',', $transaction->valor) }}" onkeypress="mascaraInput(this)">
                                         </div>
                                         <div class="form-group mx-5">
                                             <label for="category_id" class="form-label">Categoria</label>

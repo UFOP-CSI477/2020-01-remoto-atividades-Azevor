@@ -29,11 +29,6 @@
                                         <tr>
                                             <td class="text-center">{{ $categoria->nome }}</td>
                                             <td class="text-center">
-                                                {{-- <a href="{{ route('categories.edit', $categoria->id) }}"
-                                                    style="text-decoration: none;" class="btn btn-link">
-                                                    <span style="color: #007BFF">✎</span></a> --}}
-
-
                                                 <form name="frmDelete"
                                                     action="{{ route('categories.destroy', $categoria->id) }}"
                                                     method="post" onsubmit="return confirm('Deseja excluir categoria?')">

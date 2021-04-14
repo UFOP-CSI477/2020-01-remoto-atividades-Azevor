@@ -20,8 +20,12 @@ Route::get('/', function () {
     return redirect()->route('transactions.index');
 })->name('index');
 
+Route::get('/home', function () {
+    return redirect()->route('transactions.index');
+})->name('index');
+
 Route::resource('/categories', CategoryController::class);
 Route::resource('/transactions', TransactionController::class);
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

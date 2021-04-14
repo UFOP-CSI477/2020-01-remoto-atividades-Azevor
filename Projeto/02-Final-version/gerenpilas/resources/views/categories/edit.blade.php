@@ -20,8 +20,6 @@
                                             <label for="nome" class="form-label">Nome</label>
                                             <input type="text" class="form-control" name="nome" id="nome"
                                                 value="{{ $categoria->nome }}">
-                                            <input type="hidden" class="form-control" name="user_id" id="user_id"
-                                                value="{{ $categoria->user_id }}">
                                         </div>
                                     </div>
                                 </div>
@@ -30,7 +28,7 @@
                                         <input type="submit" class="btn btn-primary" value="Gravar">
                                     </div>
                                     <div class="col mt-3">
-                                        <a href="{{ route('categories.index') }}" class="btn btn-secondary">Voltar</a>
+                                        <a href="{{ route('index') }}" class="btn btn-secondary">Voltar</a>
                                     </div>
                                 </div>
                             </form>

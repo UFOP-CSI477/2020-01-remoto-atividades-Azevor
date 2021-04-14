@@ -3,7 +3,6 @@
 
 --------------
 
-<!-- Este documento tem como objetivo apresentar o projeto desenvolvido, considerando o que foi definido na proposta e o produto final. -->
 
 ### Resumo
 
@@ -11,20 +10,53 @@
   Para a implementação será utilizado o framework laravel, recursos de desenvolvimento web (html, css, js, etc) e banco de dados mysql para armazenamento dos registros diversos.
 
 ### 1. Funcionalidades implementadas
-<!-- Descrever as funcionalidades que eram previstas e foram implementas. -->
+
+* Cadastro e autenticação de usuário: Foi utilizado o pacote ui:auth do laravel, recebendo somente ajustes necessários
+* Cadastro de categorias:
+-- Adicionar categoria: Na página inicial, clicar em "Categoria" e em seguida "Adicionar Categoria";
+-- Editar categoria (opção 1): Na página inicial, clicar no nome da categoria, caso o mesmo exista na lista de transações efetuadas.
+-- Editar categoria (opção 2): Na página inicial, clicar em "Categoria". Na lista de categorias cadastradas, clicar no lápis em frente a categoria desejada.
+-- Excluir categoria: Na página inicial, clicar em "Categoria". Na lista de categorias cadastradas, clicar no 'X' em frente a categoria desejada.
+-- Adicionar nova transação: Na página inicial, clicar em "Transação".
+* Registro de entrada (receitas) e saída (despesas): A página inicial do sistema apresenta a lista de transações com os respectivos valores financeiros, além do saldo movimentado no mês apresentado e o saldo geral (todas as movimentações de todos os períodos).
+Para visualizar outro período basta selecionar nas opções o mês e/ou ano desejado.
+* Exclusão de registro financeiro: Na página inicial, clicar no nome da transação, caso o mesmo exista na lista de transações efetuadas.
   
 ### 2. Funcionalidades previstas e não implementadas
-<!-- Descrever as funcionalidades que eram previstas e não foram implementas, apresentando uma breve justificativa do porquê elas não foram incluídas -->
+* Gerar relatório financeiro por período: Esta implementação foi proposta com objetivo de apresentar transações em um determinado intervalo informado pelo usuário. Infelizmente não houve tempo hábil para esta implementação, visto que o trabalho foi iniciado após as tomar maiores conhecimentos sobre laravel através das aulas.
 
 ### 3. Outras funcionalidades implementadas
-<!-- Descrever as funcionalidades implementas além daquelas que foram previstas, caso se aplique.  -->
+* Alteração do período por meio interativo: A princípio a página apenas receberia as transações e estas seriam acumuladas numa lista. Entretanto, para melhor apresentação, foi aplicado uma divisão desta apresentação por período, onde o usuário pode modificar o mês e/ou o ano que deseja visualizar as informações.
+-- Na página inicial, clicar no combobox disponível e selecionar os dados desejados. Após a seleção os dados são atualizados na tela.
 
 ### 4. Principais desafios e dificuldades
-<!-- Descrever os principais desafios encontrados no desenvolvimento do trabalho, quais foram as dificuldades e como elas foram superadas e resolvidas. -->
+Uma das maiores dificuldades foi o cruzamento de dados do período selecionado (mes/ano) com os dados relacionados no banco de dados. Como a rota index recebe informações via get, foi possível, com o uso de javascript, direcionar a página para sua própria rota (index), mas passando as informações desejadas. Caso seja passado alguma informação inválida vazia, o mesmo é tratado para receber a data atual.
+Outra dificuldade foi fazer as consultas através do blade, invés do convencional comando sql. Mas esta dificuldade foi sanada com o auxílio da documentação do laravel.
 
 ### 5. Instruções para instalação e execução
-<!-- Descrever o que deve ser feito para instalar (ou baixar) a aplicação, o que precisa ser configurando (parâmetros, banco de dados e afins) e como executá-la. -->
-
-### 6. Referências
-<!-- Referências podem ser incluídas, caso necessário. Utilize o padrão ABNT. -->
-
+* Após baixar/clonar os arquivos e instalar o composer dentro do diretório gerenpilas
+```
+$ composer install
+```
+* Renomear o arquivo .env.example para .env
+* Gerar chave
+```
+$ php artisan key:generate
+```
+* Criar banco de dados mysql vazio em seu gerenciador, com o nome gerenpilas
+* Configurar o arquivo .env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=gerenpilas
+DB_USERNAME=root
+DB_PASSWORD=
+* Migrar as tabelas
+```
+$ php artisan migrate
+```
+* Rodar o servidor
+```
+$ php artisan serve
+```
+* Abrir o navegador no endereço localhost:8000

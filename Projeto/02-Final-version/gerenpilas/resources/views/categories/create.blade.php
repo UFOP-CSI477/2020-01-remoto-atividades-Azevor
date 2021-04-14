@@ -18,8 +18,6 @@
                                         <div class="form-group mx-5">
                                             <label for="nome" class="form-label">Nome</label>
                                             <input type="text" class="form-control" name="nome" id="nome">
-                                            <input type="hidden" class="form-control" name="user_id" id="user_id"
-                                                value="{{ Auth::user()->id }}">
                                         </div>
                                     </div>
                                 </div>

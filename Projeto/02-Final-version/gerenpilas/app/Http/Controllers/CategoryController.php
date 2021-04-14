@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
@@ -14,8 +16,12 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categorias = Category::orderBy('nome')->get();
-        return view('categories.index', ['categorias'=>$categorias]);
+        if (Auth::check()) {
+            $categorias = Category::where('user_id', Auth::user()->id)->orderBy('nome')->get();
+            return view('categories.index', ['categorias'=>$categorias]);
+        } else {
+            return view('auth.login');
+        }
     }
 
     /**
@@ -25,7 +31,11 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('categories.create');
+        if (Auth::check()) {
+            return view('categories.create');
+        } else {
+            return view('auth.login');
+        }
     }
 
     /**
@@ -36,9 +46,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        Category::create($request->all());
-        session()->flash('msg-success', 'Categoria gravada com sucesso!');
-        return redirect()->route('categories.index');
+        if (Auth::check()) {
+            $category = new Category;
+            $category->user_id = Auth::user()->id;
+            $category->nome = $request->nome;
+            $category->save();
+            session()->flash('msg-success', 'Categoria gravada com sucesso!');
+            return redirect()->route('categories.index');
+        } else {
+            return view('auth.login');
+        }
     }
 
     /**
@@ -49,7 +66,11 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return view('categories.show', ['categoria'=>$category]);
+        if (Auth::check()) {
+            return view('categories.show', ['categoria'=>$category]);
+        } else {
+            return view('auth.login');
+        }
     }
 
     /**
@@ -60,7 +81,11 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('categories.edit', ['categoria'=>$category]);
+        if (Auth::check()) {
+            return view('categories.edit', ['categoria'=>$category]);
+        } else {
+            return view('auth.login');
+        }
     }
 
     /**
@@ -72,10 +97,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        $category->fill($request->all());
-        $category->save();
-        session()->flash('msg-success', 'Categoria atualizada!');
-        return redirect()->route('categories.index');
+        if (Auth::check()) {
+            $category->nome = $request->nome;
+            $category->save();
+            session()->flash('msg-success', 'Categoria atualizada!');
+            return redirect()->route('categories.index');
+        } else {
+            return view('auth.login');
+        }
     }
 
     /**
@@ -86,12 +115,18 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        // if ($category->transaction->count() > 0) {
-            // session()->flash('msg-danger', 'Exclusão não permitida! Existem categorias cadastradas.');
-        // } else {
-            $category->delete();
-            session()->flash('msg-success', 'Categoria excluída!');
-        // }
-        return redirect()->route('categories.index');
+        if (Auth::check()) {
+            $transaction_in = Transaction::where('category_id', $category->id)->orderBy('id')->get();
+        
+            if ($transaction_in->count() > 0) {
+                session()->flash('msg-danger', 'Exclusão não permitida! Categoria pertence a uma ou mais transações.');
+            } else {
+                $category->delete();
+                session()->flash('msg-success', 'Categoria excluída!');
+            }
+            return redirect()->route('categories.index');
+        } else {
+            return view('auth.login');
+        }
     }
 }
