@@ -23,15 +23,15 @@ Para visualizar outro período basta selecionar nas opções o mês e/ou ano des
 * Exclusão de registro financeiro: Na página inicial, clicar no nome da transação, caso o mesmo exista na lista de transações efetuadas.
   
 ### 2. Funcionalidades previstas e não implementadas
-* Gerar relatório financeiro por período: Esta implementação foi proposta com objetivo de apresentar transações em um determinado intervalo informado pelo usuário. Infelizmente não houve tempo hábil para esta implementação, visto que o trabalho foi iniciado após as tomar maiores conhecimentos sobre laravel através das aulas.
+* Gerar relatório financeiro por período: Esta implementação foi proposta com objetivo de possibilitar a impressão e exportação de dados para outros formatos (excel, cvs etc). Entretanto, entre o início do projeto e a data prevista para apresentação não consegui estudar os meios necessários para implementar neste projeto.
 
 ### 3. Outras funcionalidades implementadas
 * Alteração do período por meio interativo: A princípio a página apenas receberia as transações e estas seriam acumuladas numa lista. Entretanto, para melhor apresentação, foi aplicado uma divisão desta apresentação por período, onde o usuário pode modificar o mês e/ou o ano que deseja visualizar as informações.
 -- Na página inicial, clicar no combobox disponível e selecionar os dados desejados. Após a seleção os dados são atualizados na tela.
 
 ### 4. Principais desafios e dificuldades
-Uma das maiores dificuldades foi o cruzamento de dados do período selecionado (mes/ano) com os dados relacionados no banco de dados. Como a rota index recebe informações via get, foi possível, com o uso de javascript, direcionar a página para sua própria rota (index), mas passando as informações desejadas. Caso seja passado alguma informação inválida vazia, o mesmo é tratado para receber a data atual.
-Outra dificuldade foi fazer as consultas através do blade, invés do convencional comando sql. Mas esta dificuldade foi sanada com o auxílio da documentação do laravel.
+Uma das dificuldades foi pensar em uma maneira de apresentar os dados do período selecionado com os dados relacionados no banco de dados de maneira interativa. Como a rota index recebe requisições via get, foi possível então, com o uso de javascript, direcionar a página para sua própria rota (index), mas passando as informações desejadas (mes/ano). Caso seja passado alguma informação inválida, o mesmo é tratado para receber a data atual.
+Outra dificuldade foi fazer as consultas através do blade, invés dos convencionais comandos sql, sendo esta dúvida resolvida com o auxílio da documentação do laravel e notas de aula.
 
 ### 5. Instruções para instalação e execução
 * Após baixar/clonar os arquivos e instalar o composer dentro do diretório gerenpilas
