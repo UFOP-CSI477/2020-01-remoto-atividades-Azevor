@@ -5,9 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            {{-- IMPORTAÇÃO DOS ARQUIVOS JS APRESENTANDO MSG DE ERRO NO CONSOLE --}}
     {{-- <script type="text/javascript" src={{ asset('js/bootstrap-4.6.0.min.js') }}></script>
     <script type="text/javascript" src={{ asset('js/jquery-3.5.1.slim.min.js') }}></script>
     <script type="text/javascript" src={{ asset('js/popper-1.16.1.min.js') }}></script> --}}
+            {{-- IMPORTAR PELO CDN PARA FUNCIONALIDADE DE LOGOUT LARAVEL --}}
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
@@ -90,41 +92,9 @@
 
     <footer></footer>
 
-    <script type="text/javascript">
-        function setarLocal() {
-            var mes = document.getElementById('mes').value;
-            var ano = document.getElementById('ano').value;
-            location.replace('?mes=' + mes + '&ano=' + ano);
-        }
+    <script type="text/javascript" src={{ asset('js/validarFormulario.js') }}></script>
+    <script type="text/javascript" src={{ asset('js/mascararInput.js') }}></script>
 
-        function mascaraInput(entrada) {
-            var valorString = entrada.value;
-            var evento = window.event; // captura evento digitado no teclado (estrutura tipo json)
-            var Caractere = evento.CaractereCode || evento.which; // captura o código do caractere digitado
-            Caractere = String.fromCharCode(Caractere); // converte o código na letra referente ao caractere
-            var temVirgula = valorString.indexOf(",") > -1; // Verificar se o campo já possui vírgula
-            var verifica = false;
-
-            if (temVirgula) {
-                verifica = /^[0-9]+$/; // regex referente a limitação do caractere a somente número
-                let decimal = (valorString.substring(valorString.indexOf(",")+1, valorString.length)).length;
-                if (decimal >= 2) {
-                    evento.returnValue = false;
-                }
-            } else {
-                verifica = /^[0-9,]+$/; // regex referente a limitação do caractere a somente número e vírgula
-            }
-
-            if (!verifica.test(Caractere)) {
-                evento.returnValue = false;
-
-                if (evento.preventDefault) {
-                    evento.preventDefault();
-                }
-            }
-        }
-
-    </script>
 </body>
 
 </html>

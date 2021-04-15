@@ -11,15 +11,17 @@
                             <h2>Editar categoria</h2>
                         </div>
                         <div class="mx-5">
-                            <form action="{{ route('categories.update', $categoria->id) }}" method="post">
+                            <form action="{{ route('categories.update', $categoria->id) }}" method="post" 
+                                onsubmit="return !campoVazio();">
                                 @csrf
                                 @method('PUT')
                                 <div class="row mx-5">
                                     <div class="col mx-5">
                                         <div class="form-group mx-5">
                                             <label for="nome" class="form-label">Nome</label>
-                                            <input type="text" class="form-control" name="nome" id="nome"
+                                            <input type="text" class="form-control border" name="nome" id="nome"
                                                 value="{{ $categoria->nome }}">
+                                            <div id="campo-invalido" class="text-danger d-none">* Informar categoria!</div>
                                         </div>
                                     </div>
                                 </div>
