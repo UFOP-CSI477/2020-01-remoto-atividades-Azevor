@@ -54,14 +54,14 @@
                                             <label for="meta-tipo" class="form-label">Tipo de Transação</label>
                                             <div id="contorno-tipo-transacao" class="border">
                                                 <div class="form-check mx-5">
-                                                    <input class="form-check-input" type="radio" name="tipo-transacao"
+                                                    <input class="form-check-input" type="radio" name="tipo"
                                                         id="tipo-receita" value="1" @if ($transaction->tipo) checked @endif>
                                                     <label class="form-check-label text-success" for="tipo">
                                                         Receita
                                                     </label>
                                                 </div>
                                                 <div class="form-check mx-5">
-                                                    <input class="form-check-input" type="radio" name="tipo-transacao"
+                                                    <input class="form-check-input" type="radio" name="tipo"
                                                         id="tipo-despesa" value="0" @if (!$transaction->tipo) checked @endif>
                                                     <label class="form-check-label text-danger" for="tipo">
                                                         Despesa

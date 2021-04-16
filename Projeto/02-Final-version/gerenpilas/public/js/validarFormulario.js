@@ -25,17 +25,6 @@ function campoVazio() {
 
 function validarTransacao() {
     var descricao = document.getElementById('descricao');
-    var data = document.getElementById('data');
-    var valor = document.getElementById('valor');
-    var categoria = document.getElementById('category_id');
-    var tipoSelecionado = "";
-
-    var tipo = document.getElementsByName('tipo-transacao');
-    if (tipo[0].checked) {
-        tipoSelecionado = tipo[0].value;
-    } else if (tipo[1].checked) {
-        tipoSelecionado = tipo[1].value;
-    }
 
     if (descricao.value == "") {
         removeClass('campo-descricao-invalido', 'd-none');
@@ -45,6 +34,8 @@ function validarTransacao() {
         return false;
     }
 
+    var data = document.getElementById('data');
+
     if (data.value == "") {
         removeClass('campo-data-invalido', 'd-none');
         addClass('data', 'border');
@@ -52,6 +43,8 @@ function validarTransacao() {
         data.focus();
         return false;
     }
+
+    var valor = document.getElementById('valor');
 
     if (valor.value == "") {
         removeClass('campo-valor-invalido', 'd-none');
@@ -61,12 +54,24 @@ function validarTransacao() {
         return false;
     }
 
+    
+    var categoria = document.getElementById('category_id');
+    
     if (categoria.value == "") {
         removeClass('campo-categoria-invalido', 'd-none');
         addClass('category_id', 'border');
         addClass('category_id', 'border-danger');
         categoria.focus();
         return false;
+    }
+    
+    var tipoSelecionado = "";
+    var tipo = document.getElementsByName('tipo');
+    if (tipo[0].checked) {
+        tipoSelecionado = tipo[0].value;
+    }
+    if (tipo[1].checked) {
+        tipoSelecionado = tipo[1].value;
     }
 
     if (tipoSelecionado == "") {
